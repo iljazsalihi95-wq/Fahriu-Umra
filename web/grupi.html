@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="sq">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>Fahriu Travel · Umra</title>
+<link rel="stylesheet" href="grupi.css">
+<script src="grupi.js" defer></script>
+</head>
+<body>
+<header><a href="./" class="brand">FAHRIU TRAVEL</a><button id="language" type="button">Deutsch</button></header>
+<main>
+<h1 data-text="heading"></h1>
+<p id="identity"></p>
+<form id="login">
+  <label><span data-text="code"></span><input name="token" required autocomplete="off" type="password" pattern="[a-fA-F0-9]{64}" maxlength="64"></label>
+  <button data-text="signIn"></button>
+</form>
+<p id="status" role="status"></p>
+<section id="private" hidden>
+  <nav id="tabs" aria-label="Fahriu Travel">
+    <a href="#chat" data-text="chat"></a><a href="#meeting" data-text="meeting"></a>
+    <a href="#program" data-text="program"></a><a href="#notice" data-text="notice"></a>
+    <a id="adminTab" href="#admin" data-text="admin" hidden></a>
+    <button id="logout" type="button" data-text="signOut"></button>
+  </nav>
+  <section id="chat">
+    <h2 data-text="chat"></h2>
+    <ol id="messages"></ol>
+    <form id="message">
+      <label><span data-text="message"></span><textarea name="body" required maxlength="3000"></textarea></label>
+      <button data-text="send"></button>
+    </form>
+  </section>
+  <section id="updates" hidden><h2 id="updateTitle"></h2><div id="items"></div></section>
+  <section id="admin" hidden>
+    <h2 data-text="admin"></h2>
+    <form id="publish">
+      <label><span data-text="type"></span><select name="kind">
+        <option value="meeting" data-text="meeting"></option>
+        <option value="program" data-text="program"></option>
+        <option value="notice" data-text="notice"></option>
+      </select></label>
+      <label><span data-text="titleSq"></span><input name="title_sq" required maxlength="150"></label>
+      <label><span data-text="titleDe"></span><input name="title_de" required maxlength="150"></label>
+      <label><span data-text="detailsSq"></span><textarea name="details_sq" required maxlength="3000"></textarea></label>
+      <label><span data-text="detailsDe"></span><textarea name="details_de" required maxlength="3000"></textarea></label>
+      <label><span data-text="date"></span><input name="starts_at" type="datetime-local" min="2020-01-01T00:00" max="2100-01-01T00:00"></label>
+      <label><span data-text="location"></span><input name="location" maxlength="200"></label>
+      <label><span data-text="map"></span><input name="maps_url" type="url" maxlength="1000"></label>
+      <button data-text="publish"></button><button id="cancelEdit" type="button" data-text="cancel" hidden></button>
+    </form>
+  </section>
+</section>
+</main>
+</body>
+</html>

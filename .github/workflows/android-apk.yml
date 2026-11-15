@@ -1,6 +1,8 @@
 name: Build Fahriu Travel APK
 on:
   workflow_dispatch:
+  pull_request:
+    paths: ['app/**','web/**','build.gradle.kts','settings.gradle.kts','gradle.properties','.github/workflows/android-apk.yml']
   push:
     branches: [main]
     paths: ['app/**','web/**','build.gradle.kts','settings.gradle.kts','gradle.properties','.github/workflows/android-apk.yml']
@@ -15,7 +17,11 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
-      - uses: android-actions/setup-android@v3
+      - name: Verify Android SDK 35
+        run: test -f "$ANDROID_HOME/platforms/android-35/android.jar"
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: "8.9"
       - name: Copy app pages into Android assets
         run: |
           mkdir -p app/src/main/assets

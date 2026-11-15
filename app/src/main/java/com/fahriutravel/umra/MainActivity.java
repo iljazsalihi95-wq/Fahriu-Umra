@@ -22,6 +22,14 @@ public final class MainActivity extends Activity {
   web.setWebViewClient(new WebViewClient(){
    @Override public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest req){
     Uri uri=req.getUrl(); String scheme=uri.getScheme();
+    String path = uri.getPath();
+    if ("file".equals(scheme) && ("/android_asset/grupi.html".equals(path)
+      || "/android_asset/interesim.html".equals(path))) {
+     view.loadUrl("https://fahriu-travel-umrah.netlify.app" + path.substring("/android_asset".length())
+       + (uri.getEncodedFragment() == null ? "" : "#" + uri.getEncodedFragment()));
+     return true;
+    }
+    if ("https".equals(scheme) && "fahriu-travel-umrah.netlify.app".equals(uri.getHost())) return false;
     if (scheme!=null && scheme.equals("file") && uri.toString().startsWith("file:///android_asset/")) return false;
     if (scheme!=null && (scheme.equals("https")||scheme.equals("http"))) {startActivity(new Intent(Intent.ACTION_VIEW,uri));return true;}
     return true;
