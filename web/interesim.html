@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="sq">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fahriu Travel · Umra</title>
+<link rel="stylesheet" href="grupi.css">
+<script src="interesim.js" defer></script>
+</head>
+<body>
+<header><a href="./" class="brand">FAHRIU TRAVEL</a><button id="language" type="button">Deutsch</button></header>
+<main>
+<h1 data-text="title">Më njoftoni për Umren e ardhshme</h1>
+<form id="interest">
+  <label><span data-text="firstName">Emri</span><input name="firstName" autocomplete="given-name" maxlength="80" required></label>
+  <label><span data-text="lastName">Mbiemri</span><input name="lastName" autocomplete="family-name" maxlength="80"></label>
+  <p data-text="contact">Shkruaj telefonin ose emailin.</p>
+  <label><span data-text="phone">Telefoni / WhatsApp</span><input name="phone" type="tel" autocomplete="tel" maxlength="40"></label>
+  <label><span data-text="email">Emaili</span><input name="email" type="email" autocomplete="email" maxlength="254"></label>
+  <label><span data-text="city">Qyteti</span><input name="city" autocomplete="address-level2" maxlength="100"></label>
+  <button data-text="send">Dërgo interesimin</button>
+</form>
+<p id="result" role="status"></p>
+</main>
+</body>
+</html>

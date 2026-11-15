@@ -23,3 +23,9 @@ Pas verifikimit në Netlify, lidhi rubrikat origjinale të AppCreator24 me `/gru
 ## Testet
 
 `node --test worker/test/group.test.js` me Node 24 verifikon rrjedhën e Worker-it me skemën SQLite të migrimit, me përdorues prove. Deploy-i, WebView dhe njoftimet në pajisje kontrollohen pasi të lidhen shërbimet reale.
+
+## Formulari i interesimit
+
+Vendos URL-në `/exec` të publikimit ekzistues Apps Script si `FAHRIU_APPS_SCRIPT_URL` te variablat e funksioneve Netlify. Faqja `/interesim.html` dërgon kërkesën te `/api/interest`, që përdor fushat ekzistuese të veprimit `apply`. Për provë përdor publikim dhe fletë të veçantë testimi. Kontrollo që interesimi të shfaqet në fletë dhe që faqja ta konfirmojë vetëm pas përgjigjes `ok: true`. Në AppCreator24, rubrika ekzistuese për interesimet hap këtë faqe në Netlify.
+
+Paneli i publikuar Plotësimi kontrollon një kod në JavaScript. Çdo funksion administrativ duhet të verifikojë rolin në backend përpara se të japë ose ndryshojë të dhëna.
