@@ -1,11 +1,18 @@
+import { groupRequest } from "./group.js";
 const json=(data,status=200,headers={})=>new Response(JSON.stringify(data),{status,headers:{"content-type":"application/json; charset=utf-8","cache-control":"no-store",...headers}});
 const allowedOrigin=(request,env)=>{const origin=request.headers.get("Origin");const allowed=(env.ALLOWED_ORIGINS||"").split(",").map(s=>s.trim()).filter(Boolean);return origin&&allowed.includes(origin)?origin:null};
 export default {async fetch(request,env){
 const url=new URL(request.url);
 const origin=allowedOrigin(request,env);
-const cors={"Vary":"Origin",...(origin?{"Access-Control-Allow-Origin":origin,"Access-Control-Allow-Headers":"Content-Type","Access-Control-Allow-Methods":"POST,OPTIONS"}:{})};
+const cors={"Vary":"Origin",...(origin?{"Access-Control-Allow-Origin":origin,"Access-Control-Allow-Headers":"Content-Type, Authorization","Access-Control-Allow-Methods":"GET,POST,PUT,DELETE,OPTIONS"}:{})};
 if(request.method==="OPTIONS")return new Response(null,{status:origin?204:403,headers:cors});
 if(url.pathname==="/health"&&request.method==="GET")return json({ok:true,service:"fahriu-umra-api",version:"0.1.0"},200,cors);
+if(url.pathname.startsWith("/api/group/")){
+  if(request.headers.has("Origin") && !origin) return json({error:"forbidden"},403,cors);
+  const reply=(body,status=200)=>json(body,status,cors);
+  try{return await groupRequest(request,env,url.pathname,reply)}
+  catch{return reply({error:"unavailable"},503)}
+}
 if(url.pathname!=="/api/ai/chat")return json({error:"Not found"},404,cors);
 if(request.method!=="POST")return json({error:"Method not allowed"},405,cors);
 if(!origin)return json({error:"Origin not allowed"},403,cors);

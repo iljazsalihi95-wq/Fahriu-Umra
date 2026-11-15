@@ -1,0 +1,10 @@
+[build]
+  publish = "web"
+  functions = "netlify/functions"
+
+[[headers]]
+  for = "/grupi.html"
+  [headers.values]
+    Referrer-Policy = "no-referrer"
+    Cache-Control = "no-store"
+    Content-Security-Policy = "default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'self'"
