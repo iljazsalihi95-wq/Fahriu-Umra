@@ -19,7 +19,7 @@ jobs:
       - name: Copy app pages into Android assets
         run: |
           mkdir -p app/src/main/assets
-          cp web/*.html app/src/main/assets/
+          cp -R web/. app/src/main/assets/
       - name: Build debug APK
         run: gradle --no-daemon :app:assembleDebug
       - uses: actions/upload-artifact@v4
