@@ -1,5 +1,5 @@
-const CACHE='fahriu-public-v1';
-const FILES=['./','./index.html','./njoftime.html','./udhezuesi-umres.html','./vizitat-historike.html','./offline.js','./manifest.webmanifest'];
+const CACHE='fahriu-public-chat-v2';
+const FILES=['./','./index.html','./njoftime.html','./udhezuesi-umres.html','./vizitat-historike.html','./chat.html','./chat.css','./chat.js','./offline.js','./manifest.webmanifest'];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(FILES))));
 self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key.startsWith('fahriu-public-')&&key!==CACHE).map(key=>caches.delete(key)))).then(()=>self.clients.claim())));
 self.addEventListener('fetch',event=>{

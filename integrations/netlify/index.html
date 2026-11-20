@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="sq">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Fahriu Travel</title>
+<style>
+:root{--deep:#061813;--deep2:#0b2d23;--gold:#d7ad46;--gold2:#f0d57c;--paper:#f5f1e8;--ink:#13251e;--muted:#6c7771;--line:#d9d0bc;--green:#0e7c5b;--mekke:#d4af37;--taif:#8e44ad;--blue:#3498db;--teal:#16a085;--red:#e74c3c;--nusuk:#27ae60;--orange:#e67e22;--dua:#1abc9c;--purple:#9b59b6;--group:#f39c12;--team:#2980b9;--notice:#7d5a3b}
+*{box-sizing:border-box}html{scroll-behavior:smooth;min-height:100%}html,body{margin:0;padding:0;width:100%;min-height:100%}
+body{font-family:Arial,Helvetica,sans-serif;color:white;background:#05100d;position:relative}
+body::before{content:"";position:fixed;inset:0;z-index:-2;background-image:linear-gradient(rgba(3,20,15,.40),rgba(3,20,15,.48)),url("https://ia600402.us.archive.org/21/items/fahriu-travel-komplet-foto-video-vizita-26-08-2026/Sfondi.png");background-position:center top;background-size:cover;background-repeat:no-repeat;background-color:#05100d}
+body::after{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.18))}
+.app{width:min(1050px,100%);min-height:100vh;margin:0 auto;background:transparent}
+.banner{width:100%;overflow:hidden;background:#061813;border-bottom:3px solid var(--gold)}.banner img{display:block;width:100%;height:auto;object-fit:contain}
+.headerBar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;background:linear-gradient(135deg,rgba(6,24,19,.96),rgba(11,45,35,.96));border-bottom:1px solid rgba(215,173,70,.55)}
+.brand{font-family:Georgia,serif;color:var(--gold2);font-weight:900;letter-spacing:2px;font-size:25px}.brand span{color:white}.brand small{display:block;margin-top:2px;color:#d8c68f;font-family:Arial,sans-serif;font-size:8px;letter-spacing:.7px}
+.headerBtn{border:1px solid #8f7435;background:#0d3428;color:white;border-radius:12px;min-width:46px;min-height:46px;font-size:20px}
+.intro{padding:24px 17px 26px;background:linear-gradient(135deg,rgba(5,45,34,.88),rgba(6,28,22,.82));border-bottom:1px solid rgba(215,173,70,.45)}
+.pill{display:inline-flex;align-items:center;gap:7px;padding:8px 12px;border:1px solid rgba(215,173,70,.70);border-radius:999px;background:rgba(0,0,0,.16);color:var(--gold2);font-size:11px;font-weight:900}
+.intro h1{margin:16px 0 7px;font-family:Georgia,serif;font-size:42px;line-height:.95;color:var(--gold2)}.intro h1 span{display:block;margin-top:7px;color:white;font-size:26px;letter-spacing:7px}
+.intro p{max-width:680px;margin:15px 0 0;color:#e3ebe7;font-size:14px;line-height:1.65}
+.quick{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:18px}.quick a{display:flex;align-items:center;justify-content:center;gap:7px;min-height:50px;padding:10px;border-radius:14px;text-decoration:none;font-weight:900}
+.quickOffer{color:#17251f;background:linear-gradient(135deg,#f1d572,#c89a32)}.quickGuide{color:white;background:linear-gradient(135deg,#13a777,#087051)}
+.main{padding:17px 13px 60px;background:rgba(4,24,18,.22);color:white}.sectionTitle{display:flex;align-items:center;gap:10px;margin:15px 0 12px;color:#f1d675;font-weight:900;text-align:center;text-shadow:0 2px 8px rgba(0,0,0,.85)}.sectionTitle::before,.sectionTitle::after{content:"";flex:1;height:1px;background:#c7ae6b}
+.statusCard{overflow:hidden;background:rgba(255,255,255,.96);color:#183028;border-radius:20px;border:1px solid rgba(215,173,70,.45);box-shadow:0 8px 25px rgba(0,0,0,.22)}
+.statusHead{padding:15px;background:linear-gradient(135deg,#0b4b39,#07281f);color:#f2d675}.statusHead small{display:block;font-size:9px;font-weight:900;letter-spacing:.7px}.statusHead strong{display:block;margin-top:3px;font-family:Georgia,serif;font-size:25px}
+.statusBody{padding:16px;text-align:center}.fullBadge{display:inline-block;padding:10px 13px;border-radius:999px;background:#922e2e;color:white;font-size:12px;font-weight:900}.statusBody p{margin:11px 0 0;color:#5e655f;font-size:12px;line-height:1.55}
+.menuGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.menuCard{position:relative;overflow:hidden;min-height:175px;background:rgba(255,255,255,.96);border-radius:18px;border:1px solid rgba(255,255,255,.22);box-shadow:0 8px 22px rgba(0,0,0,.22);text-decoration:none;color:#17261f}
+.cardHead{min-height:45px;display:flex;align-items:center;padding:9px 10px 9px 44px;position:relative;color:white;font-size:12px;font-weight:900}.cardNumber{position:absolute;left:8px;top:8px;width:28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:white;color:#1a3228;font-weight:900}
+.cardBody{min-height:98px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:10px}.cardIcon{font-size:48px;line-height:1}.cardName{margin-top:7px;font-size:12px;font-weight:900;text-align:center}.cardFoot{min-height:32px;display:flex;align-items:center;justify-content:center;padding:6px;color:white;font-size:9px;font-weight:900;text-align:center}
+.medine .cardHead,.medine .cardFoot{background:var(--green)}.mekke .cardHead,.mekke .cardFoot{background:var(--mekke)}.taif .cardHead,.taif .cardFoot{background:var(--taif)}.vizitat .cardHead,.vizitat .cardFoot{background:var(--blue)}.guide .cardHead,.guide .cardFoot{background:var(--teal)}.tickets .cardHead,.tickets .cardFoot{background:var(--red)}.nusuk .cardHead,.nusuk .cardFoot{background:var(--nusuk)}.live .cardHead,.live .cardFoot{background:var(--orange)}.dua .cardHead,.dua .cardFoot{background:var(--dua)}.momente .cardHead,.momente .cardFoot{background:var(--purple)}.group .cardHead,.group .cardFoot{background:var(--group)}.teamCard .cardHead,.teamCard .cardFoot{background:var(--team)}.notice .cardHead,.notice .cardFoot{background:var(--notice)}
+.offer{overflow:hidden;margin-top:8px;background:rgba(255,255,255,.96);color:#17261f;border-radius:21px;border:1px solid rgba(215,173,70,.45);box-shadow:0 9px 26px rgba(0,0,0,.22)}.offerHead{padding:16px;background:linear-gradient(135deg,#0d503d,#08291f);color:#f1d675}.offerHead small{display:block;margin-bottom:4px;font-size:9px;font-weight:900}.offerHead strong{display:block;font-family:Georgia,serif;font-size:28px}.offerStatus{padding:15px;text-align:center;background:#fff8e9}.offerStatus p{margin:9px 0 0;color:#665631;font-size:12px;line-height:1.5}
+.interestGrid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.interestField label{display:block;margin-bottom:5px;color:#725a21;font-size:9px;font-weight:900}.interestField input{width:100%;min-height:46px;border:1px solid #d5c9ac;border-radius:12px;padding:10px 11px;background:#fff;color:#173028;outline:none}.interestFull{grid-column:1/-1}
+.adminModal{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(0,0,0,.84)}.adminModal.show{display:flex}.adminBox{position:relative;width:min(390px,100%);padding:21px;border:2px solid #cda642;border-radius:22px;background:#f7f1e5;color:#173028;text-align:center;box-shadow:0 25px 70px rgba(0,0,0,.55)}.adminBox h2{margin:7px 0;color:#0b6046;font-family:Georgia,serif}.adminBox p{color:#6b756f;font-size:11px;line-height:1.5}.adminBox input{width:100%;min-height:47px;margin-top:7px;padding:10px;border:1px solid #d1c3a2;border-radius:12px;text-align:center;font-weight:900}
+.adminEnter{width:100%;min-height:48px;margin-top:9px;border:0;border-radius:12px;background:linear-gradient(135deg,#efd271,#c79931);color:#17261f;font-weight:900}.adminClose{position:absolute;right:9px;top:9px;width:35px;height:35px;border:0;border-radius:50%;background:#17372d;color:white;font-size:20px}
+@media(min-width:700px){.menuGrid{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:560px){.interestGrid{grid-template-columns:1fr}.interestFull{grid-column:auto}}@media(max-width:390px){.intro h1{font-size:35px}.intro h1 span{font-size:22px}.cardHead{font-size:11px}.cardIcon{font-size:43px}}
+.chatEntry{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;width:min(100%,560px);margin:22px auto 0;padding:20px 16px;border:2px solid #efd078;border-radius:18px;background:linear-gradient(135deg,#116b4e,#09392b);color:white;text-align:center;text-decoration:none;box-shadow:0 10px 24px #0005}.chatEntry strong{font-size:23px;color:#f2d77f}.chatEntry span{font-size:16px;line-height:1.5}.chatEntry:focus-visible{outline:3px solid white;outline-offset:4px}</style>
+
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="theme-color" content="#0b2d23">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Fahriu Travel">
+
+</head>
+<body>
+<div class="app">
+
+<section class="banner"><img src="https://ia600402.us.archive.org/21/items/fahriu-travel-komplet-foto-video-vizita-26-08-2026/Baneri.png" alt="Fahriu Travel"></section>
+
+<header class="headerBar">
+  <div class="brand">FAHRIU <span>TRAVEL</span><small>UDHËTIMI YT DREJT UMRES</small></div>
+  <button class="headerBtn" type="button" onclick="document.getElementById('rubrikat').scrollIntoView({behavior:'smooth'})">☰</button>
+</header>
+
+<section class="intro">
+  <div class="pill">🕋 UMRA • VIZITA • UDHËZIM</div>
+  <h1>FAHRIU <span>TRAVEL</span></h1>
+  <p>Udhëtim drejt vendeve të shenjta me organizim, përkujdesje dhe udhëzim gjatë Umres. Në këtë aplikacion gjeni vizitat, programin LIVE, duatë, njoftimet dhe informacionet për Umren e ardhshme.</p>
+  <div class="quick">
+    <a class="quickOffer" href="#oferta">✈️ Umra e ardhshme</a>
+    <a class='quickGuide' href='udhezuesi.html'>📖 Udhëzuesi i Umres</a>
+  </div>
+<a class="chatEntry" href="chat.html"><strong>💬 Chati i grupit</strong><span>Bisedo me udhëtarët dhe organizatorët</span><span>Mesazhet ruhen edhe pa internet</span></a>
+</section>
+
+<main class="main">
+
+<div class="sectionTitle">GRUPI AKTUAL</div>
+<section class="statusCard">
+  <div class="statusHead"><small>FAHRIU TRAVEL • UMRA 2026</small><strong>Grupi aktual</strong></div>
+  <div class="statusBody">
+    <div class="fullBadge">✓ NUMRI PËR KËTË VIT ËSHTË PLOTËSUAR</div>
+    <p>Regjistrimet për grupin aktual janë mbyllur. Për Umren e ardhshme mund të lini interesimin tuaj dhe do të informoheni sapo të publikohet oferta e re.</p>
+  </div>
+</section>
+
+<div class="sectionTitle" id="rubrikat" style="margin-top:30px">RUBRIKAT E APLIKACIONIT</div>
+<div class="menuGrid">
+
+<a class='menuCard medine' href='medine.html'><div class="cardHead"><span class="cardNumber">1</span>Vizitat në Medinë</div><div class="cardBody"><div class="cardIcon">🕌</div><div class="cardName">Vizitat në Medinë</div></div><div class="cardFoot">HISTORI • FOTO • GPS</div></a>
+
+<a class='menuCard mekke' href='mekke.html'><div class="cardHead"><span class="cardNumber">2</span>Vizitat në Mekë</div><div class="cardBody"><div class="cardIcon">🕋</div><div class="cardName">Vizitat në Mekë</div></div><div class="cardFoot">HISTORI • FOTO • GPS</div></a>
+
+<a class='menuCard taif' href='taif.html'><div class="cardHead"><span class="cardNumber">3</span>Vizitat në Taif</div><div class="cardBody"><div class="cardIcon">🌹</div><div class="cardName">Vizitat në Taif</div></div><div class="cardFoot">HISTORI • KULTURË • GPS</div></a>
+
+<a class='menuCard vizitat' href='vizitat.html'><div class="cardHead"><span class="cardNumber">4</span>Vizitat</div><div class="cardBody"><div class="cardIcon">📸</div><div class="cardName">Qendra e Vizitave</div></div><div class="cardFoot">FOTO • VIDEO • INFORMACIONE</div></a>
+
+<a class='menuCard guide' href='udhezuesi.html'><div class="cardHead"><span class="cardNumber">5</span>Udhëzuesi i Umres</div><div class="cardBody"><div class="cardIcon">📖</div><div class="cardName">Umra hap pas hapi</div></div><div class="cardFoot">UDHËZUES PRAKTIK</div></a>
+
+<a class='menuCard tickets' href='bileta-lira.html'><div class="cardHead"><span class="cardNumber">6</span>🔐 Bileta të lira</div><div class="cardBody"><div class="cardIcon">🎫</div><div class="cardName">Bileta të lira</div></div><div class="cardFoot">VETËM ADMINISTRATOR</div></a>
+
+<a class='menuCard nusuk' href='nusuk.html'><div class="cardHead"><span class="cardNumber">7</span>🔐 Nusuk</div><div class="cardBody"><div class="cardIcon">🕋</div><div class="cardName">Nusuk</div></div><div class="cardFoot">VETËM ADMINISTRATOR</div></a>
+
+<a class='menuCard live' href='programi-live.html'><div class="cardHead"><span class="cardNumber">8</span>Programi LIVE</div><div class="cardBody"><div class="cardIcon">📅</div><div class="cardName">Programi i grupit</div></div><div class="cardFoot">NISJE • NAMAZE • VIZITA</div></a>
+
+<a class='menuCard dua' href='dua-dhiker.html'><div class="cardHead"><span class="cardNumber">9</span>Dua &amp; Dhikër</div><div class="cardBody"><div class="cardIcon">🤲</div><div class="cardName">Dua &amp; Dhikër</div></div><div class="cardFoot">ARABISHT • SHQIP • GJERMANISHT</div></a>
+
+<a class='menuCard momente' href='momente-umra.html'><div class="cardHead"><span class="cardNumber">10</span>Momente nga Umra</div><div class="cardBody"><div class="cardIcon">🌄</div><div class="cardName">Foto &amp; Video</div></div><div class="cardFoot">MOMENTE NGA UDHËTIMET</div></a>
+
+<a class='menuCard group' href='grupi-ardhshem.html'><div class="cardHead"><span class="cardNumber">11</span>Umregjitë / Grupi i ardhshëm</div><div class="cardBody"><div class="cardIcon">👥</div><div class="cardName">Grupi i ardhshëm</div></div><div class="cardFoot">INTERESIM • REGJISTRIM</div></a>
+
+<a class='menuCard teamCard' href='ekipi-organizues.html'><div class="cardHead"><span class="cardNumber">12</span>Ekipi organizues</div><div class="cardBody"><div class="cardIcon">👥</div><div class="cardName">Fahriu Travel</div></div><div class="cardFoot">EKIPI • KONTAKT • UDHËHEQJA</div></a>
+
+<a class='menuCard notice' href='njoftime.html'><div class="cardHead"><span class="cardNumber">13</span>Njoftime Fahriu Travel</div><div class="cardBody"><div class="cardIcon">🔔</div><div class="cardName">Njoftimet</div></div><div class="cardFoot">INFORMACIONE • LAJMËRIME</div></a>
+
+</div>
+
+<div class="sectionTitle" id="oferta" style="margin-top:30px">UMRA E ARDHSHME</div>
+<section class="offer">
+  <div class="offerHead"><small>FAHRIU TRAVEL</small><strong>Udhëtimi i ardhshëm</strong></div>
+  <div class="offerStatus">
+    <div class="fullBadge">🕋 INFORMACIONI DO TË PUBLIKOHET KËTU</div>
+    <p>Sapo të hapet grupi i ardhshëm për Umre, këtu do të publikohen datat, çmimi, hoteli, fluturimi dhe informacionet për regjistrim.</p>
+  </div>
+</section>
+
+<div class="sectionTitle" style="margin-top:30px">JAM I INTERESUAR</div>
+<section style="background:rgba(255,255,255,.96);color:#173028;border:1px solid rgba(215,173,70,.50);border-radius:20px;padding:17px;box-shadow:0 9px 25px rgba(0,0,0,.22)">
+  <div style="text-align:center;font-size:34px;margin-bottom:7px">🔔</div>
+  <h3 style="margin:0;text-align:center;color:#0b6046;font-family:Georgia,serif;font-size:22px">Më informoni për Umren e ardhshme</h3>
+  <p style="color:#66716b;text-align:center;font-size:12px;line-height:1.55;margin:8px 0 16px">Nëse jeni të interesuar për Umren e ardhshme, lini të dhënat tuaja. Fahriu Travel do t'ju kontaktojë kur të publikohet oferta e re.</p>
+
+  <div class="interestGrid">
+    <div class="interestField"><label>EMRI *</label><input id="intName" type="text" placeholder="Emri"></div>
+    <div class="interestField"><label>MBIEMRI</label><input id="intSurname" type="text" placeholder="Mbiemri"></div>
+    <div class="interestField"><label>TELEFONI / WHATSAPP *</label><input id="intPhone" type="tel" placeholder="+49 ..."></div>
+    <div class="interestField"><label>EMAIL</label><input id="intEmail" type="email" placeholder="email@..."></div>
+    <div class="interestField interestFull"><label>QYTETI</label><input id="intCity" type="text" placeholder="p.sh. Frankenthal"></div>
+  </div>
+
+  <button id="interestButton" type="button" onclick="sendInterest()" style="width:100%;min-height:52px;margin-top:12px;border:0;border-radius:14px;background:linear-gradient(135deg,#17a875,#087050);color:white;font-weight:900;font-size:13px">🔔 DËRGO INTERESIMIN</button>
+  <div id="interestMessage" style="display:none;margin-top:10px;padding:11px;border-radius:11px;text-align:center;font-size:12px;font-weight:800"></div>
+</section>
+
+<div style="text-align:center;margin-top:18px"><button type="button" onclick="openAdmin()" style="border:1px solid rgba(215,173,70,.65);border-radius:999px;padding:9px 15px;background:rgba(6,35,27,.88);color:#ecd272;font-size:10px;font-weight:900">⚙️ PLOTËSIMI</button></div>
+
+<div style="margin-top:25px;padding:21px 12px;text-align:center;background:rgba(5,25,19,.90);border:1px solid rgba(215,173,70,.30);border-radius:18px">
+  <div style="color:#f0d475;font-family:Georgia,serif;font-size:20px;font-weight:900;letter-spacing:2px">FAHRIU TRAVEL</div>
+  <div style="margin-top:5px;color:#d6c996;font-size:10px;line-height:1.6">Umra • Vizita • Udhëzim<br>Udhëtimi yt drejt vendeve të shenjta</div>
+</div>
+
+</main>
+</div>
+
+<div id="adminModal" class="adminModal">
+  <div class="adminBox">
+    <button type="button" class="adminClose" onclick="closeAdmin()">×</button>
+    <div style="text-align:center;font-size:38px">🔐</div>
+    <h2>Plotësimi</h2>
+    <p>Hapësirë vetëm për administrimin e Fahriu Travel.</p>
+    <input id="adminCode" type="password" placeholder="Kodi">
+    <button type="button" class="adminEnter" onclick="checkAdmin()">HYR</button>
+    <div id="adminMsg" style="min-height:18px;margin-top:8px;color:#b63832;font-size:11px;font-weight:800"></div>
+  </div>
+</div>
+
+<script>
+const MASTER_API="https://script.google.com/macros/s/AKfycbxglgvt0uiZki_xGZ009fWPD-wtDnIQPELNgcyr9bQ-kih68_fUYiYu5Bjs5MhqVgI0/exec";
+
+async function sendInterest(){
+  const name=document.getElementById("intName").value.trim();
+  const surname=document.getElementById("intSurname").value.trim();
+  const phone=document.getElementById("intPhone").value.trim();
+  const email=document.getElementById("intEmail").value.trim();
+  const city=document.getElementById("intCity").value.trim();
+
+  if(!name){showInterest(false,"Ju lutem shkruani emrin.");return;}
+  if(!phone && !email){showInterest(false,"Shkruani telefonin ose emailin.");return;}
+
+  const btn=document.getElementById("interestButton");
+  btn.disabled=true;btn.textContent="⏳ DUKE DËRGUAR...";
+
+  try{
+    const body=new URLSearchParams();
+    body.append("action","apply");
+    body.append("firstName",name);
+    body.append("lastName",surname);
+    body.append("phone",phone);
+    body.append("whatsapp",phone);
+    body.append("email",email);
+    body.append("city",city);
+    body.append("interest","Jam i interesuar për Umren e ardhshme");
+    body.append("source","Ballina Fahriu Travel");
+
+    const response=await fetch(MASTER_API,{method:"POST",body});
+    const result=await response.json();
+
+    if(result.ok){
+      showInterest(true,result.message||"Interesimi u regjistrua me sukses.");
+      document.getElementById("intName").value="";
+      document.getElementById("intSurname").value="";
+      document.getElementById("intPhone").value="";
+      document.getElementById("intEmail").value="";
+      document.getElementById("intCity").value="";
+    } else {
+      showInterest(false,result.error||"Interesimi nuk u regjistrua.");
+    }
+  }catch(error){
+    showInterest(false,"Nuk u lidh me sistemin. Provo përsëri.");
+  }finally{
+    btn.disabled=false;btn.textContent="🔔 DËRGO INTERESIMIN";
+  }
+}
+
+function showInterest(success,message){
+  const box=document.getElementById("interestMessage");
+  box.style.display="block";box.textContent=message;
+  if(success){box.style.background="#e2f5e9";box.style.color="#12613e";}
+  else{box.style.background="#fde8e5";box.style.color="#a33630";}
+}
+
+function openAdmin(){
+  document.getElementById("adminModal").classList.add("show");
+  document.getElementById("adminCode").value="";
+  document.getElementById("adminMsg").textContent="";
+}
+function closeAdmin(){document.getElementById("adminModal").classList.remove("show");}
+function checkAdmin(){
+  const code=document.getElementById("adminCode").value.trim();
+  if(code!=="Plotsimi1"){document.getElementById("adminMsg").textContent="Kodi nuk është i saktë.";return;}
+  document.getElementById("adminMsg").style.color="#117047";
+  document.getElementById("adminMsg").textContent="✓ Hyrja u pranua.";
+}
+document.getElementById("adminCode").addEventListener("keydown",function(event){if(event.key==="Enter")checkAdmin();});
+document.getElementById("adminModal").addEventListener("click",function(event){if(event.target===document.getElementById("adminModal"))closeAdmin();});
+</script>
+
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", function () {
+    navigator.serviceWorker.register("./sw.js").catch(function(){});
+  });
+}
+</script>
+
+</body>
+</html>
