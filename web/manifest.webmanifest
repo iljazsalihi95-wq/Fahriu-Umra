@@ -1,0 +1,10 @@
+{
+  "name": "Fahriu Travel · Umra",
+  "short_name": "Fahriu Travel",
+  "lang": "sq",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#061b14",
+  "theme_color": "#061b14"
+}
