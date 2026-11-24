@@ -123,7 +123,7 @@ button,input,select,textarea{font:inherit}
     <p>Informacioni i grupit të ardhshëm të Fahriu Travel: vendet e rezervuara, statusi i regjistrimeve dhe të dhënat kryesore të udhëtimit.</p>
     <div class="heroBtns">
       <button class="btn gold" onclick="document.getElementById('lista').scrollIntoView()">👥 Shiko grupin</button>
-      <a id="heroApply" class="btn green" href="#" onclick="return applyClick(event)">📝 Regjistrohu</a>
+      <a id="heroApply" class="btn green" href="#" onclick="return applyClick(event)">Interesim për grupin tjetër</a>
     </div>
   </div>
 </section>
@@ -160,7 +160,7 @@ button,input,select,textarea{font:inherit}
 
   <div id="notice" class="notice">📢 Lista e grupit përditësohet nga administratori i Fahriu Travel. Për privatësi, mund të përdoret vetëm emri dhe iniciali i mbiemrit.</div>
 
-  <a id="applyBtn" class="apply" href="#" onclick="return applyClick(event)">REGJISTROHU PËR GRUPIN E ARDHSHËM ➜</a>
+  <a id="applyBtn" class="apply" href="#" onclick="return applyClick(event)">INTERESIM PËR UDHËTIMET E ARDHSHME</a>
 </main>
 
 <div class="footer">© 2026 Fahriu Travel • Umregjijtë e ardhshëm</div>
@@ -229,7 +229,7 @@ const PEOPLE_KEY="FAHRIU_NEXT_GROUP_PEOPLE_V1";
 const $=id=>document.getElementById(id);
 
 function getTrip(){
-  try{return JSON.parse(localStorage.getItem(TRIP_KEY)||"{}")}catch(e){return{}}
+  try{return {title:"UMRA 2026 / 2027",date:"25.12.2026 – 07.01.2027",text:"Lista e pjesëmarrësve të publikuar nga organizatori. Për hollësitë e udhëtimit ndiq njoftimet e grupit.",apply:"index.html#interesim",...JSON.parse(localStorage.getItem(TRIP_KEY)||"{}")}}catch(e){return{title:"UMRA 2026 / 2027",date:"25.12.2026 – 07.01.2027",apply:"index.html#interesim"}}
 }
 function getPeople(){
   try{return JSON.parse(localStorage.getItem(PEOPLE_KEY)||"[]")}catch(e){return[]}
@@ -257,8 +257,8 @@ function render(){
     $("capacityNote").textContent=confirmed>=cap?"Grupi është plot.":"Regjistrimet janë të hapura.";
     $("barFill").style.width=Math.min(100,confirmed/cap*100)+"%";
   }else{
-    $("remaining").textContent="Në pritje";
-    $("capacityNote").textContent="Regjistrimet do të hapen së shpejti.";
+    $("remaining").textContent=confirmed+" pjesëmarrës";
+    $("capacityNote").textContent="Lista e publikuar e grupit.";
     $("barFill").style.width="0%";
   }
 
