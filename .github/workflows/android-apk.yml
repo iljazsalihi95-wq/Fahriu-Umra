@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths: ['app/**','web/**','build.gradle.kts','settings.gradle.kts','gradle.properties','.github/workflows/android-apk.yml']
+    paths: ['app/**','web/**','tests/**','integrations/apps-script/**','build.gradle.kts','settings.gradle.kts','gradle.properties','.github/workflows/android-apk.yml']
 jobs:
   apk:
     runs-on: ubuntu-latest
@@ -11,6 +11,10 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v4
+      - name: Check chat and audio backend
+        run: |
+          node tests/chat-microphone.cjs
+          node tests/chat-audio-backend.cjs
       - uses: actions/setup-java@v4
         with:
           distribution: temurin

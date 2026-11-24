@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.webkit.PermissionRequest;
+import android.webkit.GeolocationPermissions;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
@@ -19,10 +20,14 @@ import androidx.webkit.WebViewAssetLoader;
 
 public final class MainActivity extends Activity {
  private static final int MICROPHONE_REQUEST = 41;
+ private static final int LOCATION_REQUEST = 42;
  private static final String ASSET_HOST = "appassets.androidplatform.net";
  private WebView web;
  private PermissionRequest pendingMicrophone;
  private boolean microphonePromptOpen;
+ private boolean locationPromptOpen;
+ private String pendingLocationOrigin;
+ private GeolocationPermissions.Callback pendingLocation;
 
  private boolean isBundledOrigin(Uri uri) {
   return "https".equals(uri.getScheme()) && ASSET_HOST.equals(uri.getHost()) && uri.getPort() == -1;
@@ -42,6 +47,19 @@ public final class MainActivity extends Activity {
    request.grant(new String[]{PermissionRequest.RESOURCE_AUDIO_CAPTURE});
   } else request.deny();
  }
+ private boolean hasLocationPermission() {
+  return checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED
+   || checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED;
+ }
+ private void finishLocationRequest(boolean granted) {
+  GeolocationPermissions.Callback callback = pendingLocation;
+  String origin = pendingLocationOrigin;
+  pendingLocation = null;
+  pendingLocationOrigin = null;
+  if (callback == null || origin == null) return;
+  Uri current = web == null || web.getUrl() == null ? Uri.EMPTY : Uri.parse(web.getUrl());
+  callback.invoke(origin, granted && !isFinishing() && isBundledOrigin(Uri.parse(origin)) && isBundledPage(current), false);
+ }
  @Override public void onCreate(Bundle state) {
   super.onCreate(state);
   getWindow().setStatusBarColor(Color.rgb(6,27,20));
@@ -50,6 +68,7 @@ public final class MainActivity extends Activity {
   WebSettings settings = web.getSettings();
   settings.setJavaScriptEnabled(true);
   settings.setDomStorageEnabled(true);
+  settings.setGeolocationEnabled(true);
   settings.setAllowFileAccess(false);
   settings.setAllowContentAccess(false);
   settings.setAllowFileAccessFromFileURLs(false);
@@ -58,10 +77,28 @@ public final class MainActivity extends Activity {
   final WebViewAssetLoader assetLoader = new WebViewAssetLoader.Builder()
    .addPathHandler("/assets/", new WebViewAssetLoader.AssetsPathHandler(this)).build();
   web.setWebChromeClient(new WebChromeClient() {
+   @Override public void onGeolocationPermissionsShowPrompt(String origin, GeolocationPermissions.Callback callback) {
+    Uri current = web == null || web.getUrl() == null ? Uri.EMPTY : Uri.parse(web.getUrl());
+    if (isFinishing() || locationPromptOpen || microphonePromptOpen || !isBundledOrigin(Uri.parse(origin)) || !isBundledPage(current)) {
+     callback.invoke(origin, false, false);
+     return;
+    }
+    finishLocationRequest(false);
+    pendingLocationOrigin = origin;
+    pendingLocation = callback;
+    if (hasLocationPermission()) finishLocationRequest(true);
+    else {
+     locationPromptOpen = true;
+     requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, LOCATION_REQUEST);
+    }
+   }
+   @Override public void onGeolocationPermissionsHidePrompt() {
+    finishLocationRequest(false);
+   }
    @Override public void onPermissionRequest(PermissionRequest request) {
     runOnUiThread(() -> {
      String[] resources = request.getResources();
-     if (isFinishing() || microphonePromptOpen || !isBundledOrigin(request.getOrigin()) || resources.length != 1
+     if (isFinishing() || microphonePromptOpen || locationPromptOpen || !isBundledOrigin(request.getOrigin()) || resources.length != 1
        || !PermissionRequest.RESOURCE_AUDIO_CAPTURE.equals(resources[0])) { request.deny(); return; }
      denyPendingMicrophone();
      pendingMicrophone = request;
@@ -82,6 +119,7 @@ public final class MainActivity extends Activity {
    }
    @Override public void onPageStarted(WebView view, String url, android.graphics.Bitmap favicon) {
     denyPendingMicrophone();
+    finishLocationRequest(false);
    }
    @Override public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
     Uri uri = request.getUrl();
@@ -99,11 +137,15 @@ public final class MainActivity extends Activity {
   if (requestCode == MICROPHONE_REQUEST) {
    microphonePromptOpen = false;
    finishMicrophoneRequest(results.length > 0 && results[0] == PackageManager.PERMISSION_GRANTED);
+  } else if (requestCode == LOCATION_REQUEST) {
+   locationPromptOpen = false;
+   finishLocationRequest(hasLocationPermission());
   }
  }
  @Override public void onBackPressed() { if (web != null && web.canGoBack()) web.goBack(); else super.onBackPressed(); }
  @Override protected void onDestroy() {
   denyPendingMicrophone();
+  finishLocationRequest(false);
   if (web != null) { web.destroy(); web = null; }
   super.onDestroy();
  }
