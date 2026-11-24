@@ -10,3 +10,9 @@ Burimi i plotë i faqes ekzistuese ruhet në `integrations/netlify/`; i njëjti 
 - Njoftimet lexojnë burimin real. Njoftimet e shfletuesit funksionojnë gjatë hapjes së faqes; Web Push për aplikacion të mbyllur kërkon konfigurim tjetër. AppCreator ka kanalin e vet ekzistues të njoftimeve.
 
 Kontrolle: sintaksa e skripteve; teste të chatit offline dhe ack; izolimi i grupeve/approval/idempotency/validimi audio në backend; numëruesit;22 hapa; filtrat e vizitave; mapimi i njoftimeve. Mikrofoni/GPS/WebView kërkojnë provë në telefon real.
+
+## Mikrofoni · korrigjimi
+
+Chati regjistron vetëm nga mikrofoni: Fol me mikrofon → Ndalo → dëgjo → Dërgo mesazhin zanor. Zgjedhësi i skedarëve audio u hoq. Android kërkon RECORD_AUDIO vetëm kur shtypet mikrofoni, pranon vetëm AUDIO_CAPTURE nga origjina e paketuar dhe ngarkon faqet lokale nga WebViewAssetLoader HTTPS që regjistrimi të jetë i disponueshëm edhe pa internet. Kamera dhe origjinat e jashtme nuk marrin leje.
+
+`node tests/chat-microphone.cjs` kontrollon refuzimin/riprovimin e lejes, shmangien e regjistrimeve të dyfishta, ndaljen/lirimin e mikrofonit, parapamjen, radhën offline dhe heqjen e regjistrimit. Prova në mikrofon fizik mbetet në telefon.
