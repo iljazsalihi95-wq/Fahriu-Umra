@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="sq">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Dua & Dhikër të Umres | Fahriu Travel</title>
+<style>
+:root{
+  --deep:#061813;--deep2:#0b2d23;--gold:#c9a227;--gold2:#f1d77b;
+  --paper:#f5f1e8;--ink:#13251e;--muted:#6e7772;--line:#d8cfbb;
+  --green:#0f7d59;--green2:#16a085;--cream:#fffaf0;--red:#b54840
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#05100d;font-family:Arial,Helvetica,sans-serif;color:white}
+button{font:inherit}
+.app{
+  width:min(1080px,100%);margin:auto;min-height:100vh;
+  background:linear-gradient(#061813 0 320px,#f4f0e7 320px 100%)
+}
+.top{
+  position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;
+  padding:12px 15px;background:#061813ef;border-bottom:1px solid #8c6f31;backdrop-filter:blur(10px)
+}
+.brand{font-family:Georgia,serif;color:var(--gold2);font-weight:900;letter-spacing:2px;font-size:19px}
+.brand span{color:white}.brand small{display:block;font-family:Arial;font-size:8px;letter-spacing:.7px;color:#d8c891;text-align:center}
+.topBtns{display:flex;gap:7px}
+.topBtn{border:1px solid #8d7133;background:#0c3025;color:#fff;border-radius:11px;padding:9px 11px;font-weight:900}
+.hero{min-height:305px;position:relative;overflow:hidden;border-bottom:4px solid var(--gold)}
+.hero:before{
+  content:"";position:absolute;inset:0;
+  background:
+   linear-gradient(90deg,#06120fea 0%,#06140fd0 48%,#06140f72 72%,#05100daa 100%),
+   url("https://archive.org/download/fahriu-travel-komplet-foto-video-vizita-26-08-2026/01_Fotot_Umra_2025%2F1000131218.jpg") center/cover no-repeat
+}
+.heroInner{position:relative;z-index:2;padding:38px 20px 34px;max-width:720px}
+.pill{display:inline-flex;gap:7px;align-items:center;padding:7px 11px;border-radius:999px;background:#6b5416;border:1px solid #d9bd62;font-size:10px;font-weight:900}
+.hero h1{font-family:Georgia,serif;color:#f1d77b;font-size:43px;margin:10px 0 5px;line-height:1}
+.hero h1 span{color:white}.hero p{max-width:640px;color:#dbe5df;line-height:1.55;font-size:14px}
+.heroBtns{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}
+.btn{
+  border:0;border-radius:12px;padding:12px 14px;font-weight:900;cursor:pointer;text-decoration:none;
+  display:inline-flex;align-items:center;justify-content:center;gap:6px
+}
+.gold{background:linear-gradient(135deg,#f0d576,#c89e36);color:#15261f}
+.green{background:linear-gradient(135deg,#1aaa77,#0d744f);color:white}
+.dark{background:#0a2c22;color:white;border:1px solid #81682f}
+.main{padding:15px 14px 50px;color:var(--ink)}
+.sectionTitle{display:flex;align-items:center;gap:9px;margin:14px 0 10px;font-weight:900}
+.sectionTitle:before,.sectionTitle:after{content:"";height:1px;background:#c9b67d;flex:1}
+.navGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-bottom:14px}
+.navCard{
+  border-radius:16px;padding:13px;text-align:center;background:#fff;border:1px solid var(--line);
+  box-shadow:0 7px 18px #13221b14;cursor:pointer
+}
+.navCard .ico{font-size:28px}.navCard b{display:block;margin-top:5px;font-size:12px}.navCard small{display:block;color:#777f7a;margin-top:3px;font-size:10px}
+.duaCard{
+  background:white;border:1px solid var(--line);border-radius:21px;overflow:hidden;
+  box-shadow:0 9px 25px #15241d17;margin-bottom:14px
+}
+.duaHead{
+  padding:14px 15px;background:linear-gradient(135deg,#143a2f,#0a241d);color:white;
+  display:flex;justify-content:space-between;gap:10px;align-items:center
+}
+.duaHead h3{margin:0;font-size:16px;color:#f2d87c}.tag{font-size:9px;font-weight:900;border-radius:999px;padding:6px 8px;background:#ffffff16;border:1px solid #ffffff24}
+.duaBody{padding:15px}
+.arabic{
+  direction:rtl;text-align:right;font-family:"Noto Naskh Arabic","Amiri","Times New Roman",serif;
+  font-size:28px;line-height:1.9;background:#fffaf0;border:1px solid #e2d5b1;border-radius:16px;padding:15px;color:#1a2a24
+}
+.block{margin-top:11px;border-radius:14px;padding:12px;background:#f7f4ec;border:1px solid #e0d7c4}
+.block b{display:block;font-size:10px;text-transform:uppercase;color:#8a6a1d;margin-bottom:5px}
+.block p{margin:0;line-height:1.55;font-size:13px}
+.source{margin-top:9px;font-size:10px;color:#77807b;line-height:1.45}
+.warn{background:#fff2e9;border:1px solid #e9c1aa;color:#72432c;border-radius:13px;padding:10px;font-size:11px;line-height:1.45;margin-top:10px}
+.verified{background:#edf8f2;border:1px solid #bfdccb;color:#275f46}
+.toolbar{display:flex;gap:7px;flex-wrap:wrap;margin-top:11px}
+.smallBtn{border:0;border-radius:10px;padding:8px 10px;font-weight:900;cursor:pointer;background:#eee6d3;color:#183027}
+.progressWrap{position:fixed;left:0;right:0;bottom:0;height:5px;background:#1113;z-index:50}
+.progress{height:100%;width:0;background:linear-gradient(90deg,#c9a227,#f1d77b)}
+.footer{text-align:center;background:#061813;color:#d2c392;padding:18px 18px 26px;font-size:10px}
+@media(max-width:760px){.navGrid{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:36px}.arabic{font-size:25px}}
+</style>
+<style id="netlify-back-style">
+.netlifyBack{position:fixed;right:12px;bottom:16px;z-index:9998;text-decoration:none;background:#061813;color:#f0d57c;border:1px solid #b89136;border-radius:999px;padding:10px 13px;font:700 12px Arial;box-shadow:0 5px 18px #0006}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="top">
+  <div class="brand">FAHRIU <span>TRAVEL</span><small>UDHËTIMI YT DREJT UMRES</small></div>
+  <div class="topBtns">
+    <button class="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">⬆️</button>
+    <button class="topBtn" onclick="toggleLang()">SQ/DE</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="heroInner">
+    <div class="pill">🤲 DUA & DHIKËR • UMRA</div>
+    <h1>DUA & <span>DHIKËR</span></h1>
+    <p>Udhëzues praktik për udhëtimin, Umren dhe vizitën në Medinë: tekst arab, transkriptim me shkronja shqipe, përkthim shqip dhe gjermanisht.</p>
+    <div class="heroBtns">
+      <button class="btn gold" onclick="document.getElementById('etapat').scrollIntoView()">🕋 Etapat e Umres</button>
+      <button class="btn green" onclick="document.getElementById('raudah').scrollIntoView()">🕌 Lutjet në Raudah</button>
+    </div>
+  </div>
+</section>
+
+<main class="main">
+  <div class="sectionTitle" id="etapat">ETAPAT</div>
+  <div class="navGrid">
+    <div class="navCard" onclick="go('udhetimi')"><div class="ico">✈️</div><b>Dua e udhëtimit</b><small>Para dhe gjatë rrugës</small></div>
+    <div class="navCard" onclick="go('ihrami')"><div class="ico">🕋</div><b>Ihrami & Telbija</b><small>Nijet dhe përgjigjja ndaj thirrjes</small></div>
+    <div class="navCard" onclick="go('tavafi')"><div class="ico">🔄</div><b>Tavafi</b><small>Dhikër dhe dua</small></div>
+    <div class="navCard" onclick="go('saji')"><div class="ico">🚶</div><b>Safa & Merva</b><small>Sa'ji</small></div>
+    <div class="navCard" onclick="go('zemzem')"><div class="ico">💧</div><b>Zemzemi</b><small>Dua dhe falënderim</small></div>
+    <div class="navCard" onclick="go('fund')"><div class="ico">✂️</div><b>Përfundimi</b><small>Pas Umres</small></div>
+    <div class="navCard" onclick="go('medina')"><div class="ico">🕌</div><b>Medina</b><small>Mesxhidi Nebevij</small></div>
+    <div class="navCard" onclick="go('raudah')"><div class="ico">🌿</div><b>Raudah</b><small>Lutje nga materiali yt</small></div>
+  </div>
+
+  <div class="sectionTitle" id="udhetimi">DUA E UDHËTIMIT</div>
+
+  <article class="duaCard">
+    <div class="duaHead"><h3>✈️ Dua e udhëtimit</h3><span class="tag">E TRANSMETUAR</span></div>
+    <div class="duaBody">
+      <div class="arabic">اللَّهُ أَكْبَرُ، اللَّهُ أَكْبَرُ، اللَّهُ أَكْبَرُ، سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ، وَإِنَّا إِلَى رَبِّنَا لَمُنقَلِبُونَ. اللَّهُمَّ إِنَّا نَسْأَلُكَ فِي سَفَرِنَا هَذَا الْبِرَّ وَالتَّقْوَى، وَمِنَ الْعَمَلِ مَا تَرْضَى. اللَّهُمَّ هَوِّنْ عَلَيْنَا سَفَرَنَا هَذَا وَاطْوِ عَنَّا بُعْدَهُ. اللَّهُمَّ أَنْتَ الصَّاحِبُ فِي السَّفَرِ وَالْخَلِيفَةُ فِي الْأَهْلِ.</div>
+      <div class="block sq"><b>Transkriptim shqip</b><p>Allahu Ekber, Allahu Ekber, Allahu Ekber. Subhanel-ledhi sehhara lena hadha ve ma kunna lehu mukrinin, ve inna ila Rabbina le-munkalibun. Allahumme inna nes'eluke fi seferina hadha el-birre vet-takva, ve minel-'ameli ma terdha. Allahumme hevvin 'alejna seferena hadha, vetvi 'anna bu'dehu. Allahumme ente-s-sahibu fis-sefer, vel-halifetu fil-ehl.</p></div>
+      <div class="block sq"><b>Përkthim shqip</b><p>Allahu është më i Madhi. I Pastër nga të metat është Ai që na e vuri në shërbim këtë mjet, sepse vetë nuk do të mund ta zotëronim; dhe te Zoti ynë do të kthehemi. O Allah, në këtë udhëtim të kërkojmë mirësi, devotshmëri dhe vepra që Ti i pëlqen. Na e lehtëso këtë udhëtim dhe na e shkurto largësinë e tij. O Allah, Ti je Shoqëruesi në udhëtim dhe Mbrojtësi i familjes që lëmë pas.</p></div>
+      <div class="block de" style="display:none"><b>Deutsch</b><p>Allah ist der Größte. Preis sei Dem, Der uns dieses Transportmittel dienstbar gemacht hat, obwohl wir es aus eigener Kraft nicht beherrschen könnten; und zu unserem Herrn werden wir zurückkehren. O Allah, wir bitten Dich auf dieser Reise um Güte, Gottesfurcht und Taten, die Dir gefallen. Erleichtere uns diese Reise und verkürze ihre Entfernung. O Allah, Du bist der Begleiter auf der Reise und der Beschützer der Familie, die wir zurücklassen.</p></div>
+      <div class="source">Burim: dua e njohur e udhëtimit; materiali yt e përmban në arabisht, transkriptim dhe shqip.</div>
+    </div>
+  </article>
+
+  <div class="sectionTitle" id="ihrami">IHRAMI & TELBIJA</div>
+
+  <article class="duaCard">
+    <div class="duaHead"><h3>🕋 Nijeti për Umre</h3><span class="tag">NIJET</span></div>
+    <div class="duaBody">
+      <div class="arabic">لَبَّيْكَ عُمْرَةً</div>
+      <div class="block sq"><b>Transkriptim</b><p>Lebbejke 'umreten.</p></div>
+      <div class="block sq"><b>Shqip</b><p>Të përgjigjem Ty për Umre.</p></div>
+      <div class="block de" style="display:none"><b>Deutsch</b><p>Hier bin ich zu Deiner Verfügung für die Umra.</p></div>
+      <div class="warn verified">Nijeti është në zemër; kjo shprehje përdoret për të hyrë në Umre.</div>
+    </div>
+  </article>
+
+  <article class="duaCard">
+    <div class="duaHead"><h3>📣 Telbija</h3><span class="tag">SUNET</span></div>
+    <div class="duaBody">
+      <div class="arabic">لَبَّيْكَ اللَّهُمَّ لَبَّيْكَ، لَبَّيْكَ لَا شَرِيكَ لَكَ لَبَّيْكَ، إِنَّ الْحَمْدَ وَالنِّعْمَةَ لَكَ وَالْمُلْكَ، لَا شَرِيكَ لَكَ</div>
+      <div class="block sq"><b>Transkriptim</b><p>Lebbejke Allahumme lebbejk. Lebbejke la sherike leke lebbejk. Innel-hamde ven-ni'mete leke vel-mulk, la sherike lek.</p></div>
+      <div class="block sq"><b>Shqip</b><p>Të përgjigjem, o Allah, të përgjigjem. Të përgjigjem, Ti nuk ke ortak. Vërtet falënderimi, mirësia dhe sundimi të përkasin Ty. Ti nuk ke ortak.</p></div>
+      <div class="block de" style="display:none"><b>Deutsch</b><p>Hier bin ich, o Allah, hier bin ich. Hier bin ich; Du hast keinen Teilhaber. Wahrlich, alles Lob, jede Gnade und die Herrschaft gehören Dir. Du hast keinen Teilhaber.</p></div>
+    </div>
+  </article>
+
+  <div class="sectionTitle" id="tavafi">TAVAFI</div>
+
+  <article class="duaCard">
+    <div class="duaHead"><h3>🪨 Te Haxherul-Esved</h3><span class="tag">DHIKËR</span></div>
+    <div class="duaBody">
+      <div class="arabic">بِسْمِ اللَّهِ، اللَّهُ أَكْبَرُ</div>
+      <div class="block sq"><b>Transkriptim</b><p>Bismilah, Allahu Ekber.</p></div>
+      <div class="block sq"><b>Shqip</b><p>Me emrin e Allahut. Allahu është më i Madhi.</p></div>
+      <div class="block de" style="display:none"><b>Deutsch</b><p>Im Namen Allahs. Allah ist der Größte.</p></div>
+    </div>
+  </article>
+
+  <article class="duaCard">
+    <div class="duaHead"><h3>🤲 Ndërmjet Ruknit Jemanij dhe Haxherul-Esved</h3><span class="tag">KURAN</span></div>
+    <div class="duaBody">
+      <div class="arabic">رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ</div>
+      <div class="block sq"><b>Transkriptim</b><p>Rabbena atina fid-dunja haseneten ve fil-ahireti haseneten ve kina 'adhaben-nar.</p></div>
+      <div class="block sq"><b>Shqip</b><p>Zoti ynë, na jep të mira në këtë botë dhe të mira në botën tjetër, dhe na ruaj nga dënimi i Zjarrit.</p></div>
+      <div class="block de" style="display:none"><b>Deutsch</b><p>Unser Herr, gib uns Gutes im Diesseits und Gutes im Jenseits und bewahre uns vor der Strafe des Feuers.</p></div>
+      <div class="source">Kurani, El-Bekare 2:201.</div>
+    </div>
+  </article>
+
+  <article class="duaCard">
+    <div class="duaHead"><h3>🔄 Gjatë tavafit</h3><span class="tag">LIRI NË DUA</span></div>
+    <div class="duaBody">
+      <div class="warn">Nuk ka dua të veçantë të detyrueshme për çdo rrotullim. Mund të bëhet dhikër, salavat, istigfar dhe dua personale.</div>
+      <div class="arabic">سُبْحَانَ اللَّهِ، وَالْحَمْدُ لِلَّهِ، وَلَا إِلٰهَ إِلَّا اللَّهُ، وَاللَّهُ أَكْبَرُ</div>
+      <div class="block sq"><b>Transkriptim</b><p>SubhanAllah, vel-hamdu lil-lah, ve la ilahe il-lAllah, vallahu Ekber.</p></div>
+      <div class="block sq"><b>Shqip</b><p>I Pastër është Allahu nga çdo e metë; falënderimi i takon Allahut; nuk ka të adhuruar me të drejtë përveç Allahut; Allahu është më i Madhi.</p></div>
+      <div class="block de" style="display:none"><b>Deutsch</b><p>Gepriesen sei Allah; alles Lob gebührt Allah; es gibt keinen anbetungswürdigen Gott außer Allah; Allah ist der Größte.</p></div>
+    </div>
+  </article>
+
+  <div class="sectionTitle" id="zemzem">ZEMZEMI</div>
+
+  <article class="duaCard">
+    <div class="duaHead"><h3>💧 Kur pi ujë Zemzem</h3><span class="tag">DUA E LEJUAR</span></div>
+    <div class="duaBody">
+      <div class="arabic">اللَّهُمَّ إِنِّي أَسْأَلُكَ عِلْمًا نَافِعًا، وَرِزْقًا وَاسِعًا، وَشِفَاءً مِنْ كُلِّ دَاءٍ</div>
+      <div class="block sq"><b>Transkriptim</b><p>Allahumme inni es'eluke 'ilmen nafi'an, ve rizkan vasi'an, ve shifa'en min kulli da'.</p></div>
+      <div class="block sq"><b>Shqip</b><p>O Allah, të kërkoj dituri të dobishme, furnizim të gjerë dhe shërim nga çdo sëmundje.</p></div>
+      <div class="block de" style="display:none"><b>Deutsch</b><p>O Allah, ich bitte Dich um nützliches Wissen, reichlichen Lebensunterhalt und Heilung von jeder Krankheit.</p></div>
+      <div class="warn">Mund të bësh edhe dua personale për atë që ke nevojë.</div>
+    </div>
+  </article>
+
+  <div class="sectionTitle" id="saji">SAFA & MERVA</div>
+
+  <article class="duaCard">
+    <div class="duaHead"><h3>🚶 Kur afrohet Safa</h3><span class="tag">KURAN + SUNET</span></div>
+    <div class="duaBody">
+      <div class="arabic">إِنَّ الصَّفَا وَالْمَرْوَةَ مِنْ شَعَائِرِ اللَّهِ</div>
+      <div class="block sq"><b>Transkriptim</b><p>Inne-s-Safa vel-Mervete min she'airillah.</p></div>
+      <div class="block sq"><b>Shqip</b><p>Vërtet Safa dhe Merva janë prej shenjave të Allahut.</p></div>
+      <div class="block de" style="display:none"><b>Deutsch</b><p>Wahrlich, Safa und Marwa gehören zu den Zeichen Allahs.</p></div>
+      <div class="source">Kurani, El-Bekare 2:158.</div>
+    </div>
+  </article>
+
+  <article class="duaCard">
+    <div class="duaHead"><h3>☝️ Dhikri në Safa dhe Merva</h3><span class="tag">SUNET</span></div>
+    <div class="duaBody">
+      <div class="arabic">لَا إِلٰهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ</div>
+      <div class="block sq"><b>Transkriptim</b><p>La ilahe il-lAllahu vahdehu la sherike leh, lehul-mulku ve lehul-hamdu ve huve 'ala kulli shej'in kadir.</p></div>
+      <div class="block sq"><b>Shqip</b><p>Nuk ka të adhuruar me të drejtë përveç Allahut, Një dhe pa ortak. Atij i takon sundimi dhe falënderimi, dhe Ai ka fuqi mbi çdo gjë.</p></div>
+      <div class="block de" style="display:none"><b>Deutsch</b><p>Es gibt keinen anbetungswürdigen Gott außer Allah allein, ohne Teilhaber. Ihm gehört die Herrschaft und Ihm gebührt das Lob, und Er hat Macht über alle Dinge.</p></div>
+    </div>
+  </article>
+
+  <div class="sectionTitle" id="fund">PAS PËRFUNDIMIT TË UMRES</div>
+
+  <article class="duaCard">
+    <div class="duaHead"><h3>🤲 Dua për pranimin e Umres</h3><span class="tag">DUA E PËRGJITHSHME</span></div>
+    <div class="duaBody">
+      <div class="arabic">اللَّهُمَّ اجْعَلْ عُمْرَتَنَا مَقْبُولَةً، وَسَعْيَنَا مَشْكُورًا، وَذَنْبَنَا مَغْفُورًا</div>
+      <div class="block sq"><b>Transkriptim</b><p>Allahumme xh'al 'umretena makbuleten, ve sa'jena meshkuren, ve dhenbena magfuren.</p></div>
+      <div class="block sq"><b>Shqip</b><p>O Allah, bëje Umren tonë të pranuar, sa'jin tonë të shpërblyer dhe mëkatet tona të falura.</p></div>
+      <div class="block de" style="display:none"><b>Deutsch</b><p>O Allah, nimm unsere Umra an, belohne unser Sa'i und vergib unsere Sünden.</p></div>
+      <div class="warn">Kjo është dua e përgjithshme; nuk paraqitet si formulë e posaçme e transmetuar për përfundimin e Umres.</div>
+    </div>
+  </article>
+
+  <div class="sectionTitle" id="medina">MEDINA & MESXHIDI NEBEVIJ</div>
+
+  <article class="duaCard">
+    <div class="duaHead"><h3>🕌 Hyrja në xhami</h3><span class="tag">SUNET I PËRGJITHSHËM</span></div>
+    <div class="duaBody">
+      <div class="arabic">اللَّهُمَّ افْتَحْ لِي أَبْوَابَ رَحْمَتِكَ</div>
+      <div class="block sq"><b>Transkriptim</b><p>Allahumme-ftah li ebvabe rahmetik.</p></div>
+      <div class="block sq"><b>Shqip</b><p>O Allah, m'i hap dyert e mëshirës Tënde.</p></div>
+      <div class="block de" style="display:none"><b>Deutsch</b><p>O Allah, öffne mir die Tore Deiner Barmherzigkeit.</p></div>
+    </div>
+  </article>
+
+  <div class="sectionTitle" id="raudah">LUTJET NË RAUDAH</div>
+
+  <article class="duaCard">
+    <div class="duaHead"><h3>🌿 Lutja kryesore për falje dhe drejtësi</h3><span class="tag">MATERIALI YT</span></div>
+    <div class="duaBody">
+      <div class="arabic">اللهم صل على محمد وعلى آل محمد واغفر لي ذنوبي واجعلني من الصالحين وارزقني حبك وحب رسولك وارزقني زيارة مقبولة وعمل مبارك في بيتك الحرام ومسجدك النبوي</div>
+      <div class="block sq"><b>Transkriptim shqip</b><p>Allahumme salli 'ala Muhammedin ve 'ala ali Muhammed, vagfir li dhunubi, vexh'alni mine-s-salihin, verzukni hubbeke ve hubbe Resulike, verzukni zijareten makbuleten ve 'amelen mebruren fi bejtike-l-haram ve mesxhidike-n-nebevi.</p></div>
+      <div class="block sq"><b>Përkthim shqip</b><p>O Allah, dërgo paqe dhe bekim mbi Muhamedin dhe familjen e tij. Fali mëkatet e mia, bëj që të jem nga të devotshmit, dhuroji zemrës sime dashurinë Tënde dhe dashurinë e të Dërguarit Tënd, dhe më dhuro vizitë të pranuar e vepra të bekuara në Shtëpinë Tënde të Shenjtë dhe në Xhaminë e Profetit.</p></div>
+      <div class="block de" style="display:none"><b>Deutsch</b><p>O Allah, sende Frieden und Segen auf Muhammad und seine Familie. Vergib mir meine Sünden, mache mich zu den Rechtschaffenen, schenke mir Deine Liebe und die Liebe Deines Gesandten und gewähre mir einen angenommenen Besuch und gesegnete Taten in Deinem Heiligen Haus und in der Moschee des Propheten.</p></div>
+      <div class="warn">Dua e përgjithshme nga materiali yt për Raudah; nuk po paraqitet si formulë e posaçme profetike për Raudah.</div>
+    </div>
+  </article>
+
+  <article class="duaCard">
+    <div class="duaHead"><h3>💚 Lutja për bekim dhe udhëzim</h3><span class="tag">MATERIALI YT</span></div>
+    <div class="duaBody">
+      <div class="arabic">اللهم اجعل قلبي عامرا بذكرك وارزقني خشوعا واجعل عملي خالصا لوجهك ووفقني لطاعتك وارض عني</div>
+      <div class="block sq"><b>Transkriptim</b><p>Allahumme xh'al kulubi 'amiran bi dhikrika, verzukni hushu'an, vexh'al 'amali halisan li vexhhik, ve veffikni li ta'atik, verdh 'anni.</p></div>
+      <div class="block sq"><b>Shqip</b><p>O Allah, bëje zemrën time të mbushur me përmendjen Tënde, më dhuro përulësi, bëji veprat e mia të sinqerta për hirin Tënd, më udhëzo në bindje ndaj Teje dhe qofsh i kënaqur me mua.</p></div>
+      <div class="block de" style="display:none"><b>Deutsch</b><p>O Allah, erfülle mein Herz mit Deinem Gedenken, schenke mir Demut, mache meine Taten aufrichtig nur für Dich, führe mich zum Gehorsam Dir gegenüber und sei mit mir zufrieden.</p></div>
+    </div>
+  </article>
+
+  <article class="duaCard">
+    <div class="duaHead"><h3>👨‍👩‍👧‍👦 Lutja për familjen dhe umetin</h3><span class="tag">MATERIALI YT</span></div>
+    <div class="duaBody">
+      <div class="arabic">اللهم احفظ أهلي وأحبتي وأمتي واغفر لهم وارزقنا جميعا الجنة والنعيم المقيم</div>
+      <div class="block sq"><b>Transkriptim</b><p>Allahumme ihfadh ehli ve ehbabti ve ummeti, vagfir lehum, verzukna xhemian el-xhennete ven-na'imen el-mukim.</p></div>
+      <div class="block sq"><b>Shqip</b><p>O Allah, ruaj familjen time, të dashurit e mi dhe umetin tim, fali ata dhe na dhuro të gjithëve Xhenetin dhe kënaqësinë e përhershme.</p></div>
+      <div class="block de" style="display:none"><b>Deutsch</b><p>O Allah, beschütze meine Familie, meine Lieben und meine Gemeinschaft, vergib ihnen und schenke uns allen das Paradies und die ewige Glückseligkeit.</p></div>
+    </div>
+  </article>
+
+  <article class="duaCard">
+    <div class="duaHead"><h3>🌙 Lutja për durim dhe bekim shpirtëror</h3><span class="tag">MATERIALI YT</span></div>
+    <div class="duaBody">
+      <div class="arabic">اللهم اجعلنا من الصابرين واشرح صدورنا بالإيمان واغمرنا بنورك وبارك لنا في حياتنا وعمرنا</div>
+      <div class="block sq"><b>Transkriptim</b><p>Allahumme xh'alna mine-s-sabirin, veshrah sudurena bil-iman, vagmurna bi nurike, ve barik lena fi hayatina ve 'umrina.</p></div>
+      <div class="block sq"><b>Shqip</b><p>O Allah, bëj që të jemi nga të durueshmit, hap zemrat tona me iman, përmbushna me dritën Tënde dhe bekoje jetën dhe kohën tonë.</p></div>
+      <div class="block de" style="display:none"><b>Deutsch</b><p>O Allah, mache uns zu den Geduldigen, öffne unsere Herzen durch den Glauben, umhülle uns mit Deinem Licht und segne unser Leben und unsere Zeit.</p></div>
+    </div>
+  </article>
+
+  <article class="duaCard">
+    <div class="duaHead"><h3>🤍 Lutja e grupit</h3><span class="tag">MATERIALI YT</span></div>
+    <div class="duaBody">
+      <div class="arabic">اللهم اجمع بيننا على المحبة والطاعة، وأفرغ علينا صبرا وسكينة، وارزقنا دموع الخشوع عند رؤية الكعبة</div>
+      <div class="block sq"><b>Transkriptim</b><p>Allahumme xhma' bejna 'alel-mehabbeti vet-ta'ah, ve efrigh 'alejna sabren ve sekineten, verzukna dumua-l-hushu'i 'inda ru'jetil-Ka'beh.</p></div>
+      <div class="block sq"><b>Shqip</b><p>O Allah, bashkoje mes nesh dashurinë dhe bindjen ndaj Teje, derdh mbi ne durim dhe qetësi, dhe na dhuro lot përulësie kur ta shohim Qaben.</p></div>
+      <div class="block de" style="display:none"><b>Deutsch</b><p>O Allah, vereine uns in Liebe und Gehorsam Dir gegenüber, schenke uns Geduld und innere Ruhe und gewähre uns Tränen der Demut beim Anblick der Kaaba.</p></div>
+      <div class="warn">Dua e përgjithshme për grupin, e marrë nga materiali yt.</div>
+    </div>
+  </article>
+
+  <div class="sectionTitle">SHËNIM I RËNDËSISHËM</div>
+  <div class="warn verified">
+    Në këtë faqe janë ndarë qartë formulat e transmetuara nga duatë e përgjithshme. Duatë e përgjithshme lejohen si lutje personale, por nuk duhen paraqitur si sunet specifik për një vend apo ritual nëse nuk ka argument të posaçëm.
+  </div>
+</main>
+
+<div class="footer">© 2026 Fahriu Travel • Dua & Dhikër të Umres</div>
+</div>
+
+<div class="progressWrap"><div id="progress" class="progress"></div></div>
+
+<script>
+let lang="sq";
+function toggleLang(){
+  lang=lang==="sq"?"de":"sq";
+  document.querySelectorAll(".sq").forEach(x=>x.style.display=lang==="sq"?"block":"none");
+  document.querySelectorAll(".de").forEach(x=>x.style.display=lang==="de"?"block":"none");
+}
+function go(id){document.getElementById(id).scrollIntoView({behavior:"smooth",block:"start"})}
+window.addEventListener("scroll",()=>{
+  const h=document.documentElement;
+  const max=h.scrollHeight-h.clientHeight;
+  document.getElementById("progress").style.width=(max?window.scrollY/max*100:0)+"%";
+});
+</script>
+<a class='netlifyBack' href='/'>⌂ Ballina</a>
+</body>
+</html>

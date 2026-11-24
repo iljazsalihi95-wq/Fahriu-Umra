@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="sq">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Bileta të lira | Fahriu Travel</title>
+<style>
+:root{
+  --deep:#061813;--deep2:#0b2d23;--gold:#d7ad46;--gold2:#f0d57c;
+  --red:#d94a3f;--paper:#f5f1e8;--ink:#13251e;--muted:#6c7771;
+  --line:#d9d0bc;--green:#0d855e;--blue:#207fb6
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#05100d;font-family:Arial,Helvetica,sans-serif;color:white}
+button,input,select,textarea{font:inherit}
+.app{
+  width:min(1100px,100%);margin:auto;min-height:100vh;
+  background:linear-gradient(#061813 0 310px,#f4f0e7 310px 100%)
+}
+.top{
+  position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;
+  padding:12px 15px;background:#061813ee;border-bottom:1px solid #8b6f31;backdrop-filter:blur(10px)
+}
+.brand{font-family:Georgia,serif;color:var(--gold2);font-weight:900;letter-spacing:2px;font-size:19px}
+.brand span{color:white}.brand small{display:block;font-family:Arial;font-size:8px;letter-spacing:.7px;color:#d9c68e;text-align:center}
+.topBtn{border:1px solid #8d7133;background:#0c3025;color:#fff;border-radius:11px;padding:9px 11px;font-weight:900}
+.hero{
+  min-height:298px;position:relative;overflow:hidden;border-bottom:4px solid var(--gold)
+}
+.hero:before{
+  content:"";position:absolute;inset:0;
+  background:
+    linear-gradient(90deg,#06120fea 0%,#06140fc8 47%,#06140f70 72%,#05100daa 100%),
+    url("https://archive.org/download/fahriu-travel-komplet-foto-video-vizita-26-08-2026/01_Fotot_Umra_2025%2F1000131218.jpg") center/cover no-repeat
+}
+.heroInner{position:relative;z-index:2;padding:38px 20px 34px;max-width:690px}
+.lockPill{
+  display:inline-flex;align-items:center;gap:7px;padding:7px 11px;border-radius:999px;
+  background:#8f2b25;border:1px solid #ee887f;font-size:10px;font-weight:900
+}
+.hero h1{font-family:Georgia,serif;color:#f1d77b;font-size:42px;margin:10px 0 5px;line-height:1}
+.hero h1 span{color:#fff}.hero p{max-width:610px;color:#dbe5df;line-height:1.5;font-size:14px}
+.heroBtns{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}
+.btn{
+  border:0;border-radius:12px;padding:12px 14px;font-weight:900;cursor:pointer;text-decoration:none;
+  display:inline-flex;align-items:center;justify-content:center;gap:6px
+}
+.gold{background:linear-gradient(135deg,#efd271,#c89b32);color:#15261f}
+.green{background:linear-gradient(135deg,#16a775,#08704e);color:white}
+.red{background:linear-gradient(135deg,#ee6257,#bb3028);color:white}
+.dark{background:#0a2c22;color:white;border:1px solid #81682f}
+.main{padding:15px 14px 50px;color:var(--ink)}
+.sectionTitle{display:flex;align-items:center;gap:9px;margin:12px 0 10px;font-weight:900}
+.sectionTitle:before,.sectionTitle:after{content:"";height:1px;background:#c9b67d;flex:1}
+.panel{
+  background:#fff;border:1px solid var(--line);border-radius:21px;padding:15px;
+  box-shadow:0 9px 26px #15241d18;margin-bottom:14px
+}
+.searchGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}
+.field label{display:block;font-size:10px;font-weight:900;color:#68736d;margin:0 0 4px}
+.field input,.field select,.field textarea{
+  width:100%;border:1px solid #cec5b0;border-radius:11px;padding:11px;background:#fff;color:#17241f
+}
+.full{grid-column:1/-1}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:11px}
+.actions .btn{flex:1;min-width:140px}
+.quickLinks{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:12px}
+.quick{
+  border:1px solid #ddd3bc;border-radius:15px;padding:13px;text-align:center;background:#f8f5ed;
+  text-decoration:none;color:#183128;font-weight:900
+}
+.quick span{display:block;font-size:26px;margin-bottom:5px}.quick small{display:block;color:#7b847f;font-weight:600;margin-top:3px}
+.offerList{display:grid;grid-template-columns:repeat(2,1fr);gap:11px}
+.offer{
+  border-radius:19px;overflow:hidden;background:white;border:1px solid #d8cfbb;box-shadow:0 8px 22px #14261f17
+}
+.offerTop{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:13px 14px;background:linear-gradient(135deg,#173b31,#0a211b);color:white}
+.air{font-size:13px;font-weight:900}.price{font-size:22px;color:#f3d879;font-weight:900}
+.offerBody{padding:14px}.route{font-size:18px;font-weight:900;color:#163329}.meta{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:10px}
+.meta div{background:#f6f3eb;border-radius:11px;padding:9px;font-size:11px}.meta b{display:block;color:#94701c;margin-bottom:3px}
+.note{margin-top:9px;color:#626e68;font-size:11px;line-height:1.45}.offerActions{display:flex;gap:7px;margin-top:11px}
+.offerActions button{flex:1;border:0;border-radius:10px;padding:9px;font-weight:900;cursor:pointer}
+.empty{text-align:center;padding:30px 15px;color:#727d77}.empty span{font-size:45px;display:block;margin-bottom:8px}
+.lock{
+  position:fixed;inset:0;z-index:100;background:radial-gradient(circle at top,#0b4b39,#061813 58%,#020805);
+  display:flex;align-items:center;justify-content:center;padding:18px
+}
+.lock.hidden{display:none}
+.lockCard{
+  width:min(420px,100%);background:#f7f2e7;color:#173029;border:2px solid #d1a942;border-radius:24px;
+  padding:25px 20px;text-align:center;box-shadow:0 24px 80px #000a
+}
+.lockIcon{font-size:54px}.lockCard h2{margin:7px 0;color:#0c513d}.lockCard p{font-size:12px;color:#68736e;line-height:1.5}
+.lockCard input{width:100%;padding:13px;border:1px solid #baa77c;border-radius:11px;text-align:center;font-size:18px;margin:8px 0}
+.error{color:#ad2e28;font-size:11px;min-height:15px;margin-top:7px}
+.editor{
+  position:fixed;inset:0;z-index:80;background:#000b;display:none;align-items:flex-start;justify-content:center;
+  padding:18px;overflow:auto
+}
+.editCard{
+  width:min(760px,100%);background:#f7f2e7;color:#13241d;border:2px solid #c8a23f;border-radius:22px;padding:17px;
+  box-shadow:0 30px 80px #0009
+}
+.editGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
+.editCard h2{margin:0;color:#0d5e46}.editCard p{font-size:11px;color:#69736e}
+.footer{text-align:center;background:#061813;color:#d2c392;padding:18px;font-size:10px}
+@media(max-width:720px){
+  .hero h1{font-size:35px}.searchGrid{grid-template-columns:1fr 1fr}
+  .quickLinks{grid-template-columns:1fr}.offerList{grid-template-columns:1fr}
+}
+@media(max-width:480px){.searchGrid,.editGrid{grid-template-columns:1fr}.full{grid-column:auto}}
+</style>
+<style id="netlify-back-style">
+.netlifyBack{position:fixed;right:12px;bottom:16px;z-index:9998;text-decoration:none;background:#061813;color:#f0d57c;border:1px solid #b89136;border-radius:999px;padding:10px 13px;font:700 12px Arial;box-shadow:0 5px 18px #0006}
+</style>
+</head>
+<body>
+
+<div id="lock" class="lock">
+  <div class="lockCard">
+    <div class="lockIcon">🔐</div>
+    <h2>Bileta të lira</h2>
+    <p>Kjo rubrikë është private dhe përdoret vetëm nga administratori i Fahriu Travel.</p>
+    <input id="pass" type="password" placeholder="Kodi i administratorit">
+    <button class="btn gold" style="width:100%" onclick="unlock()">HYR NË SISTEM</button>
+    <div id="err" class="error"></div>
+  </div>
+</div>
+
+<div class="app">
+<header class="top">
+  <div class="brand">FAHRIU <span>TRAVEL</span><small>UDHËTIMI YT DREJT UMRES</small></div>
+  <button class="topBtn" onclick="lockAgain()">🔐 DAL</button>
+</header>
+
+<section class="hero">
+  <div class="heroInner">
+    <div class="lockPill">🔐 VETËM ADMINISTRATOR</div>
+    <h1>BILETA <span>TË LIRA</span> ✈️</h1>
+    <p>Kërko, krahaso dhe ruaj ofertat e fluturimeve për grupet e Fahriu Travel. Këtu mund të mbash ofertat më të mira para se të vendoset paketa përfundimtare e Umres.</p>
+    <div class="heroBtns">
+      <button class="btn gold" onclick="document.getElementById('search').scrollIntoView()">🔎 Kërko bileta</button>
+      <button class="btn green" onclick="openEditor()">＋ Ruaj ofertë</button>
+    </div>
+  </div>
+</section>
+
+<main class="main">
+  <div class="sectionTitle" id="search">KËRKIMI I FLUTURIMEVE</div>
+  <section class="panel">
+    <div class="searchGrid">
+      <div class="field"><label>NISJA NGA</label><input id="sFrom" placeholder="p.sh. Frankfurt, Köln"></div>
+      <div class="field"><label>DESTINACIONI</label><input id="sTo" placeholder="p.sh. Jeddah, Medina"></div>
+      <div class="field"><label>DATA E NISJES</label><input id="sDateOut" type="date"></div>
+      <div class="field"><label>DATA E KTHIMIT</label><input id="sDateBack" type="date"></div>
+      <div class="field"><label>UDHËTARË</label><input id="sPeople" type="number" min="1" value="1"></div>
+      <div class="field"><label>KLASA</label><select id="sClass"><option>Economy</option><option>Premium Economy</option><option>Business</option></select></div>
+      <div class="field"><label>BAGAZHI</label><select id="sBag"><option>Me bagazh</option><option>Vetëm bagazh dore</option></select></div>
+      <div class="field"><label>FLUTURIM</label><select id="sTrip"><option>Vajtje & kthim</option><option>Vetëm vajtje</option></select></div>
+    </div>
+
+    <div class="quickLinks">
+      <a class="quick" href="https://www.google.com/travel/flights" target="_blank"><span>🌐</span>Google Flights<small>Krahasim i shpejtë i linjave</small></a>
+      <a class="quick" href="https://www.skyscanner.com/" target="_blank"><span>✈️</span>Skyscanner<small>Kërkim i çmimeve nga shumë faqe</small></a>
+      <a class="quick" href="https://www.kayak.com/flights" target="_blank"><span>🔎</span>Kayak<small>Krahasim alternativ i fluturimeve</small></a>
+    </div>
+  </section>
+
+  <div class="sectionTitle">OFERTAT E RUAJTURA</div>
+  <section id="offers" class="offerList"></section>
+</main>
+
+<div class="footer">© 2026 Fahriu Travel • Rubrikë private për administrimin e biletave</div>
+</div>
+
+<div id="editor" class="editor">
+ <div class="editCard">
+   <h2>✈️ Ruaj një ofertë bilete</h2>
+   <p>Plotëso të dhënat që ke nga kompania ajrore ose faqja ku e gjete ofertën.</p>
+   <div class="editGrid">
+     <div class="field"><label>KOMPANIA AJRORE</label><input id="fAirline" placeholder="Turkish Airlines"></div>
+     <div class="field"><label>ÇMIMI</label><input id="fPrice" placeholder="p.sh. 620 €"></div>
+     <div class="field"><label>NISJA NGA</label><input id="fFrom" placeholder="Frankfurt"></div>
+     <div class="field"><label>DERI NË</label><input id="fTo" placeholder="Medina"></div>
+     <div class="field"><label>DATA / ORA E NISJES</label><input id="fOut" placeholder="20.12.2026 • 10:40"></div>
+     <div class="field"><label>DATA / ORA E KTHIMIT</label><input id="fBack" placeholder="30.12.2026 • 14:15"></div>
+     <div class="field"><label>NDËRSA / TRANSITI</label><input id="fStops" placeholder="p.sh. Istanbul"></div>
+     <div class="field"><label>BAGAZHI</label><input id="fBag" placeholder="p.sh. 30 kg + 8 kg"></div>
+     <div class="field full"><label>LINKU I OFERTËS</label><input id="fLink" placeholder="https://..."></div>
+     <div class="field full"><label>SHËNIME</label><textarea id="fNote" placeholder="Kushtet, afati i ofertës, ndryshimet, etj."></textarea></div>
+   </div>
+   <div class="actions">
+     <button class="btn green" onclick="saveOffer()">💾 RUAJ</button>
+     <button class="btn dark" onclick="closeEditor()">MBYLL</button>
+   </div>
+ </div>
+</div>
+
+<script>
+const PASS="Biletalir1";
+const KEY="FAHRIU_TRAVEL_FLIGHT_OFFERS_V1";
+let editIndex=-1;
+const $=id=>document.getElementById(id);
+
+function unlock(){
+  if($("pass").value===PASS){
+    sessionStorage.setItem("fahriuFlightsAuth","1");
+    $("lock").classList.add("hidden");
+    $("err").textContent="";
+  }else{
+    $("err").textContent="Kodi nuk është i saktë.";
+  }
+}
+function lockAgain(){
+  sessionStorage.removeItem("fahriuFlightsAuth");
+  $("pass").value="";
+  $("lock").classList.remove("hidden");
+}
+$("pass").addEventListener("keydown",e=>{if(e.key==="Enter")unlock()});
+if(sessionStorage.getItem("fahriuFlightsAuth")==="1") $("lock").classList.add("hidden");
+
+function getOffers(){
+  try{return JSON.parse(localStorage.getItem(KEY)||"[]")}catch(e){return[]}
+}
+function setOffers(a){localStorage.setItem(KEY,JSON.stringify(a))}
+function esc(s){return String(s||"").replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]))}
+
+function render(){
+  const data=getOffers();
+  if(!data.length){
+    $("offers").innerHTML='<div class="panel empty" style="grid-column:1/-1"><span>✈️</span><b>Ende nuk ka oferta të ruajtura.</b><br><small>Kur të gjesh një biletë të mirë, shtype “Ruaj ofertë”.</small></div>';
+    return;
+  }
+  $("offers").innerHTML=data.map((o,i)=>`
+    <article class="offer">
+      <div class="offerTop">
+        <div class="air">✈️ ${esc(o.airline||"Kompania ajrore")}</div>
+        <div class="price">${esc(o.price||"—")}</div>
+      </div>
+      <div class="offerBody">
+        <div class="route">${esc(o.from||"—")} → ${esc(o.to||"—")}</div>
+        <div class="meta">
+          <div><b>Nisja</b>${esc(o.out||"—")}</div>
+          <div><b>Kthimi</b>${esc(o.back||"—")}</div>
+          <div><b>Transit</b>${esc(o.stops||"—")}</div>
+          <div><b>Bagazh</b>${esc(o.bag||"—")}</div>
+        </div>
+        ${o.note?`<div class="note">${esc(o.note)}</div>`:""}
+        <div class="offerActions">
+          ${o.link?`<button style="background:#0d855e;color:white" onclick="window.open('${esc(o.link)}','_blank')">HAP OFERTËN</button>`:""}
+          <button style="background:#e8d18c;color:#1d2b25" onclick="editOffer(${i})">EDITO</button>
+          <button style="background:#d94a3f;color:white" onclick="deleteOffer(${i})">FSHI</button>
+        </div>
+      </div>
+    </article>`).join("");
+}
+function openEditor(){
+  editIndex=-1;
+  ["fAirline","fPrice","fFrom","fTo","fOut","fBack","fStops","fBag","fLink","fNote"].forEach(id=>$(id).value="");
+  $("editor").style.display="flex";
+}
+function closeEditor(){$("editor").style.display="none"}
+function saveOffer(){
+  const o={
+    airline:$("fAirline").value.trim(),price:$("fPrice").value.trim(),
+    from:$("fFrom").value.trim(),to:$("fTo").value.trim(),
+    out:$("fOut").value.trim(),back:$("fBack").value.trim(),
+    stops:$("fStops").value.trim(),bag:$("fBag").value.trim(),
+    link:$("fLink").value.trim(),note:$("fNote").value.trim()
+  };
+  const a=getOffers();
+  if(editIndex>=0)a[editIndex]=o; else a.unshift(o);
+  setOffers(a);closeEditor();render();
+}
+function editOffer(i){
+  const o=getOffers()[i];editIndex=i;
+  const map={fAirline:"airline",fPrice:"price",fFrom:"from",fTo:"to",fOut:"out",fBack:"back",fStops:"stops",fBag:"bag",fLink:"link",fNote:"note"};
+  Object.entries(map).forEach(([id,k])=>$(id).value=o[k]||"");
+  $("editor").style.display="flex";
+}
+function deleteOffer(i){
+  if(!confirm("Ta fshij këtë ofertë?"))return;
+  const a=getOffers();a.splice(i,1);setOffers(a);render();
+}
+render();
+</script>
+<a class='netlifyBack' href='/'>⌂ Ballina</a>
+</body>
+</html>

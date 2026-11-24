@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="sq">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Ekipi Organizator | Fahriu Travel</title>
+<style>
+:root{
+  --deep:#061813;--deep2:#0b2d23;--gold:#d7ad46;--gold2:#f0d57c;
+  --paper:#f5f1e8;--ink:#13251e;--muted:#6c7771;--line:#d9d0bc;
+  --blue:#2980b9;--green:#0d855e;--cream:#fffaf0
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#05100d;font-family:Arial,Helvetica,sans-serif;color:white}
+button{font:inherit}
+.app{
+  width:min(1100px,100%);margin:auto;min-height:100vh;
+  background:linear-gradient(#061813 0 325px,#f4f0e7 325px 100%)
+}
+.top{
+  position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;
+  padding:12px 15px;background:#061813ef;border-bottom:1px solid #8c6f31;backdrop-filter:blur(10px)
+}
+.brand{font-family:Georgia,serif;color:var(--gold2);font-weight:900;letter-spacing:2px;font-size:19px}
+.brand span{color:white}.brand small{display:block;font-family:Arial;font-size:8px;letter-spacing:.7px;color:#d9c68e;text-align:center}
+.topBtn{border:1px solid #8d7133;background:#0c3025;color:#fff;border-radius:11px;padding:9px 11px;font-weight:900}
+.hero{min-height:308px;position:relative;overflow:hidden;border-bottom:4px solid var(--gold)}
+.hero:before{
+  content:"";position:absolute;inset:0;
+  background:
+    linear-gradient(90deg,#06120fea 0%,#06140fcf 48%,#06140f73 72%,#05100daa 100%),
+    url("https://archive.org/download/fahriu-travel-komplet-foto-video-vizita-26-08-2026/01_Fotot_Umra_2025%2F1000131215.jpg") center/cover no-repeat
+}
+.heroInner{position:relative;z-index:2;padding:38px 20px 34px;max-width:720px}
+.pill{display:inline-flex;gap:7px;align-items:center;padding:7px 11px;border-radius:999px;background:#1e5f8d;border:1px solid #76b0d7;font-size:10px;font-weight:900}
+.hero h1{font-family:Georgia,serif;color:#f1d77b;font-size:43px;margin:10px 0 5px;line-height:1}
+.hero h1 span{color:white}.hero p{max-width:640px;color:#dbe5df;line-height:1.55;font-size:14px}
+.heroBtns{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}
+.btn{
+  border:0;border-radius:12px;padding:12px 14px;font-weight:900;cursor:pointer;text-decoration:none;
+  display:inline-flex;align-items:center;justify-content:center;gap:6px
+}
+.gold{background:linear-gradient(135deg,#efd271,#c89b32);color:#15261f}
+.blue{background:linear-gradient(135deg,#3c8fc4,#236895);color:white}
+.green{background:linear-gradient(135deg,#16a775,#08704e);color:white}
+.main{padding:15px 14px 50px;color:var(--ink)}
+.sectionTitle{display:flex;align-items:center;gap:9px;margin:14px 0 10px;font-weight:900}
+.sectionTitle:before,.sectionTitle:after{content:"";height:1px;background:#c9b67d;flex:1}
+.team{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.profile{
+  background:#fff;border:1px solid var(--line);border-radius:21px;overflow:hidden;
+  box-shadow:0 9px 25px #15241d17
+}
+.profileTop{
+  padding:18px;text-align:center;background:linear-gradient(145deg,#143a2f,#0a241d);color:white
+}
+.avatar{
+  width:78px;height:78px;margin:auto;border-radius:50%;display:grid;place-items:center;
+  font-size:36px;background:#ffffff12;border:2px solid #d9b85b
+}
+.profileTop h3{margin:10px 0 4px;color:#f0d576;font-size:18px}
+.profileTop p{margin:0;color:#d8e4dd;font-size:11px}
+.profileBody{padding:15px}
+.role{display:inline-block;padding:6px 9px;border-radius:999px;background:#eef5f1;color:#0c6e4b;font-size:9px;font-weight:900}
+.profileBody ul{padding-left:18px;margin:12px 0 0;color:#596860;font-size:12px;line-height:1.6}
+.contact{
+  margin-top:12px;padding:11px;border-radius:13px;background:#f7f4ec;border:1px solid #dfd6c3;
+  font-size:11px;color:#5d6963
+}
+.contact b{display:block;color:#8a6818;margin-bottom:3px}
+.mission{
+  margin-top:14px;background:linear-gradient(145deg,#fff7e8,#f8edd4);border:1px solid #e0c995;border-radius:20px;padding:16px
+}
+.mission h3{margin:0 0 8px;color:#795817}.mission p{margin:0;color:#5f625e;line-height:1.55;font-size:12px}
+.values{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:14px}
+.value{background:#fff;border:1px solid var(--line);border-radius:15px;padding:13px;text-align:center}
+.value .ico{font-size:27px}.value b{display:block;margin-top:5px;font-size:12px}.value small{display:block;color:#737d77;margin-top:3px;font-size:10px}
+.footer{text-align:center;background:#061813;color:#d2c392;padding:18px;font-size:10px}
+@media(max-width:760px){
+ .hero h1{font-size:36px}.team{grid-template-columns:1fr}.values{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+<style id="netlify-back-style">
+.netlifyBack{position:fixed;right:12px;bottom:16px;z-index:9998;text-decoration:none;background:#061813;color:#f0d57c;border:1px solid #b89136;border-radius:999px;padding:10px 13px;font:700 12px Arial;box-shadow:0 5px 18px #0006}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="top">
+  <div class="brand">FAHRIU <span>TRAVEL</span><small>UDHËTIMI YT DREJT UMRES</small></div>
+  <button class="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">⬆️</button>
+</header>
+
+<section class="hero">
+  <div class="heroInner">
+    <div class="pill">🤝 EKIPI ORGANIZATOR</div>
+    <h1>TRE PERSONA <span>NJË PËRGJEGJËSI</span></h1>
+    <p>Organizimi, udhëzimi dhe përkujdesja për grupin e Fahriu Travel — nga përgatitja para nisjes deri në kthimin nga Umra.</p>
+    <div class="heroBtns">
+      <button class="btn gold" onclick="document.getElementById('ekipi').scrollIntoView()">👥 Shiko ekipin</button>
+      <button class="btn blue" onclick="document.getElementById('misioni').scrollIntoView()">🎯 Misioni ynë</button>
+    </div>
+  </div>
+</section>
+
+<main class="main">
+  <div class="sectionTitle" id="ekipi">EKIPI</div>
+
+  <section class="team">
+    <article class="profile">
+      <div class="profileTop">
+        <div class="avatar">✈️</div>
+        <h3>Fahri Misini</h3>
+        <p>Fahriu Travel</p>
+      </div>
+      <div class="profileBody">
+        <span class="role">ORGANIZATOR</span>
+        <ul>
+          <li>Organizimi i paketave të Umres</li>
+          <li>Koordinimi i biletave dhe udhëtimit</li>
+          <li>Komunikimi me hotelet dhe partnerët</li>
+          <li>Menaxhimi i rezervimeve</li>
+        </ul>
+        <div class="contact"><b>Kontakt</b>Të dhënat e kontaktit mund të vendosen këtu.</div>
+      </div>
+    </article>
+
+    <article class="profile">
+      <div class="profileTop">
+        <div class="avatar">🧭</div>
+        <h3>Ilaz Salihi</h3>
+        <p>Udhëheqës i grupit</p>
+      </div>
+      <div class="profileBody">
+        <span class="role">UDHËHEQËS & UDHËZIM</span>
+        <ul>
+          <li>Udhëzimi i Umres hap pas hapi</li>
+          <li>Programi i vizitave në Mekë dhe Medinë</li>
+          <li>Sqarimet fetare dhe organizative</li>
+          <li>Përkujdesja për grupin gjatë udhëtimit</li>
+        </ul>
+        <div class="contact"><b>Kontakt</b>Të dhënat e kontaktit mund të vendosen këtu.</div>
+      </div>
+    </article>
+
+    <article class="profile">
+      <div class="profileTop">
+        <div class="avatar">🤝</div>
+        <h3>Eldemez Latifi</h3>
+        <p>Mbështetje e grupit</p>
+      </div>
+      <div class="profileBody">
+        <span class="role">ORGANIZIM & MBËSHTETJE</span>
+        <ul>
+          <li>Koordinimi i lëvizjeve të grupit</li>
+          <li>Ndihmë gjatë vizitave dhe transportit</li>
+          <li>Mbështetje praktike për pjesëmarrësit</li>
+          <li>Komunikim i drejtpërdrejtë me grupin</li>
+        </ul>
+        <div class="contact"><b>Kontakt</b>Të dhënat e kontaktit mund të vendosen këtu.</div>
+      </div>
+    </article>
+  </section>
+
+  <div class="sectionTitle" id="misioni">MISIONI YNË</div>
+  <section class="mission">
+    <h3>Që udhëtari të ketë pranë dikë në çdo hap</h3>
+    <p>Synimi i Fahriu Travel është që çdo pjesëmarrës të ketë informacion të qartë para nisjes, organizim të mirë gjatë udhëtimit, udhëzim për Umren, program të vizitave dhe mbështetje sa herë që ka nevojë.</p>
+  </section>
+
+  <section class="values">
+    <div class="value"><div class="ico">📋</div><b>Organizim</b><small>Planifikim i qartë</small></div>
+    <div class="value"><div class="ico">🕋</div><b>Udhëzim</b><small>Umra hap pas hapi</small></div>
+    <div class="value"><div class="ico">🤝</div><b>Përkujdesje</b><small>Grupi nuk mbetet vetëm</small></div>
+    <div class="value"><div class="ico">📞</div><b>Komunikim</b><small>Informacion i drejtpërdrejtë</small></div>
+  </section>
+</main>
+
+<div class="footer">© 2026 Fahriu Travel • Ekipi Organizator</div>
+</div>
+<a class='netlifyBack' href='/'>⌂ Ballina</a>
+</body>
+</html>

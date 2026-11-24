@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="sq">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Nusuk | Fahriu Travel</title>
+<style>
+:root{
+  --deep:#061813;--deep2:#0b2d23;--gold:#d7ad46;--gold2:#f0d57c;
+  --paper:#f5f1e8;--ink:#13251e;--muted:#6c7771;--line:#d9d0bc;
+  --green:#27ae60;--green2:#13945b;--blue:#207fb6
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#05100d;font-family:Arial,Helvetica,sans-serif;color:white}
+button,input,textarea{font:inherit}
+.app{
+  width:min(1100px,100%);margin:auto;min-height:100vh;
+  background:linear-gradient(#061813 0 315px,#f4f0e7 315px 100%)
+}
+.top{
+  position:sticky;top:0;z-index:30;display:flex;justify-content:space-between;align-items:center;
+  padding:12px 15px;background:#061813ee;border-bottom:1px solid #8b6f31;backdrop-filter:blur(10px)
+}
+.brand{font-family:Georgia,serif;color:var(--gold2);font-weight:900;letter-spacing:2px;font-size:19px}
+.brand span{color:white}.brand small{display:block;font-family:Arial;font-size:8px;letter-spacing:.7px;color:#d9c68e;text-align:center}
+.topBtn{border:1px solid #8d7133;background:#0c3025;color:#fff;border-radius:11px;padding:9px 11px;font-weight:900}
+.hero{min-height:302px;position:relative;overflow:hidden;border-bottom:4px solid var(--gold)}
+.hero:before{
+  content:"";position:absolute;inset:0;
+  background:
+   linear-gradient(90deg,#06120fea 0%,#06140fd5 48%,#06140f78 72%,#05100daa 100%),
+   url("https://archive.org/download/fahriu-travel-komplet-foto-video-vizita-26-08-2026/01_Fotot_Umra_2025%2F1000131218.jpg") center/cover no-repeat
+}
+.heroInner{position:relative;z-index:2;padding:38px 20px 33px;max-width:700px}
+.lockPill{display:inline-flex;gap:7px;align-items:center;padding:7px 11px;border-radius:999px;background:#176d43;border:1px solid #62c78f;font-size:10px;font-weight:900}
+.hero h1{font-family:Georgia,serif;color:#f1d77b;font-size:44px;margin:10px 0 5px;line-height:1}
+.hero h1 span{color:white}.hero p{max-width:620px;color:#dbe5df;line-height:1.55;font-size:14px}
+.heroBtns{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}
+.btn{
+  border:0;border-radius:12px;padding:12px 14px;font-weight:900;cursor:pointer;text-decoration:none;
+  display:inline-flex;align-items:center;justify-content:center;gap:6px
+}
+.gold{background:linear-gradient(135deg,#efd271,#c89b32);color:#15261f}
+.green{background:linear-gradient(135deg,#22b96f,#0d7d4b);color:white}
+.dark{background:#0a2c22;color:white;border:1px solid #81682f}
+.main{padding:15px 14px 50px;color:var(--ink)}
+.sectionTitle{display:flex;align-items:center;gap:9px;margin:12px 0 10px;font-weight:900}
+.sectionTitle:before,.sectionTitle:after{content:"";height:1px;background:#c9b67d;flex:1}
+.panel{
+  background:#fff;border:1px solid var(--line);border-radius:21px;padding:15px;
+  box-shadow:0 9px 26px #15241d18;margin-bottom:14px
+}
+.introGrid{display:grid;grid-template-columns:1.2fr .8fr;gap:12px}
+.nusukCard{background:linear-gradient(145deg,#eaf7ee,#f9fcfa);border:1px solid #bfd8c7;border-radius:18px;padding:16px}
+.nusukLogo{font-size:48px;margin-bottom:7px}.nusukCard h2{margin:0;color:#167041}.nusukCard p{color:#5d6d64;line-height:1.55;font-size:13px}
+.official{background:linear-gradient(145deg,#0d4e34,#08281d);color:white;border-radius:18px;padding:16px}
+.official h3{margin:0 0 7px;color:#efcf73}.official p{font-size:12px;color:#d8e4dd;line-height:1.5}
+.official a{display:block;margin-top:8px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.card{background:#fff;border:1px solid #d8cfbb;border-radius:18px;padding:15px;box-shadow:0 8px 20px #14261f15}
+.card .ico{font-size:34px;margin-bottom:7px}.card h3{margin:0;font-size:14px;color:#17593b}.card p{font-size:11px;color:#67736c;line-height:1.45}
+.checklist{display:grid;gap:8px}
+.check{display:flex;gap:10px;align-items:flex-start;padding:11px;background:#f7f4ec;border:1px solid #ded6c4;border-radius:13px}
+.check input{margin-top:3px;transform:scale(1.2)}.check b{display:block;font-size:13px}.check small{display:block;color:#707c75;line-height:1.4;margin-top:2px}
+.noteBox textarea{width:100%;min-height:130px;padding:12px;border:1px solid #ccc2aa;border-radius:13px;resize:vertical}
+.lock{
+  position:fixed;inset:0;z-index:100;background:radial-gradient(circle at top,#0b4b39,#061813 58%,#020805);
+  display:flex;align-items:center;justify-content:center;padding:18px
+}
+.lock.hidden{display:none}
+.lockCard{
+  width:min(420px,100%);background:#f7f2e7;color:#173029;border:2px solid #d1a942;border-radius:24px;
+  padding:25px 20px;text-align:center;box-shadow:0 24px 80px #000a
+}
+.lockIcon{font-size:54px}.lockCard h2{margin:7px 0;color:#0c513d}.lockCard p{font-size:12px;color:#68736e;line-height:1.5}
+.lockCard input{width:100%;padding:13px;border:1px solid #baa77c;border-radius:11px;text-align:center;font-size:18px;margin:8px 0}
+.error{color:#ad2e28;font-size:11px;min-height:15px;margin-top:7px}
+.footer{text-align:center;background:#061813;color:#d2c392;padding:18px;font-size:10px}
+@media(max-width:720px){.hero h1{font-size:36px}.introGrid{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.grid{grid-template-columns:1fr}}
+</style>
+<style id="netlify-back-style">
+.netlifyBack{position:fixed;right:12px;bottom:16px;z-index:9998;text-decoration:none;background:#061813;color:#f0d57c;border:1px solid #b89136;border-radius:999px;padding:10px 13px;font:700 12px Arial;box-shadow:0 5px 18px #0006}
+</style>
+</head>
+<body>
+
+<div id="lock" class="lock">
+  <div class="lockCard">
+    <div class="lockIcon">🔐</div>
+    <h2>Nusuk</h2>
+    <p>Kjo rubrikë është private dhe përdoret vetëm nga administratori i Fahriu Travel.</p>
+    <input id="pass" type="password" placeholder="Kodi i administratorit">
+    <button class="btn gold" style="width:100%" onclick="unlock()">HYR NË NUSUK</button>
+    <div id="err" class="error"></div>
+  </div>
+</div>
+
+<div class="app">
+<header class="top">
+  <div class="brand">FAHRIU <span>TRAVEL</span><small>UDHËTIMI YT DREJT UMRES</small></div>
+  <button class="topBtn" onclick="lockAgain()">🔐 DAL</button>
+</header>
+
+<section class="hero">
+  <div class="heroInner">
+    <div class="lockPill">🔐 VETËM ADMINISTRATOR</div>
+    <h1>NUSUK <span>ADMIN</span> 🇸🇦</h1>
+    <p>Qendër praktike për përgatitjen e grupit: Nusuk, rezervimet, kontrolli i të dhënave dhe shënimet operative të Fahriu Travel.</p>
+    <div class="heroBtns">
+      <a class="btn gold" href="https://www.nusuk.sa/" target="_blank">🌐 HAP NUSUK</a>
+      <button class="btn green" onclick="document.getElementById('checklist').scrollIntoView()">✓ CHECKLIST</button>
+    </div>
+  </div>
+</section>
+
+<main class="main">
+  <div class="sectionTitle">NUSUK – QENDRA E ADMINISTRIMIT</div>
+
+  <section class="introGrid">
+    <div class="nusukCard">
+      <div class="nusukLogo">🇸🇦</div>
+      <h2>Nusuk</h2>
+      <p>Nusuk është platforma zyrtare saudite për shërbime që lidhen me Umren, vizitat dhe organizimin e udhëtarëve. Kjo rubrikë e Fahriu Travel shërben si pikë e vetme ku administratori mund të kontrollojë detyrat e grupit dhe të mbajë shënimet e nevojshme.</p>
+    </div>
+
+    <div class="official">
+      <h3>🔗 Lidhje zyrtare</h3>
+      <p>Për veprime reale përdor gjithmonë faqen ose aplikacionin zyrtar të Nusuk.</p>
+      <a class="btn gold" href="https://www.nusuk.sa/" target="_blank">HAP NUSUK.SA</a>
+      <a class="btn dark" href="https://www.visitsaudi.com/" target="_blank">VISIT SAUDI</a>
+    </div>
+  </section>
+
+  <div class="sectionTitle">FUNKSIONET KRYESORE</div>
+  <section class="grid">
+    <div class="card"><div class="ico">👥</div><h3>Kontrolli i grupit</h3><p>Mbaj shënim kush është përgatitur dhe cilat të dhëna mungojnë.</p></div>
+    <div class="card"><div class="ico">📱</div><h3>Llogaritë Nusuk</h3><p>Kontrollo që udhëtarët të kenë qasje funksionale në Nusuk kur nevojitet.</p></div>
+    <div class="card"><div class="ico">🛂</div><h3>Dokumentet</h3><p>Kontroll operacional për pasaportë, vizë dhe të dhënat e udhëtarit.</p></div>
+    <div class="card"><div class="ico">🕌</div><h3>Vizitat</h3><p>Mbaj informacionet që lidhen me vizitat dhe programin e grupit.</p></div>
+    <div class="card"><div class="ico">📅</div><h3>Orari</h3><p>Koordino rezervimet me Programin LIVE të Fahriu Travel.</p></div>
+    <div class="card"><div class="ico">⚠️</div><h3>Problemet</h3><p>Shëno rastet që kërkojnë ndërhyrje ose verifikim para nisjes.</p></div>
+  </section>
+
+  <div class="sectionTitle" id="checklist">CHECKLIST E GRUPIT</div>
+  <section class="panel checklist">
+    <label class="check"><input type="checkbox" data-k="passport"><div><b>Pasaportat janë kontrolluar</b><small>Emri, mbiemri dhe vlefshmëria për çdo udhëtar.</small></div></label>
+    <label class="check"><input type="checkbox" data-k="visa"><div><b>Vizat janë kontrolluar</b><small>Verifikim që dokumenti i udhëtimit është në rregull.</small></div></label>
+    <label class="check"><input type="checkbox" data-k="nusuk"><div><b>Nusuk është përgatitur</b><small>Udhëtarët që kanë nevojë për qasje janë kontrolluar.</small></div></label>
+    <label class="check"><input type="checkbox" data-k="hotels"><div><b>Hotelet janë konfirmuar</b><small>Mekë dhe Medinë sipas paketës së grupit.</small></div></label>
+    <label class="check"><input type="checkbox" data-k="transport"><div><b>Transporti është konfirmuar</b><small>Aeroport, hotele dhe programi i vizitave.</small></div></label>
+    <label class="check"><input type="checkbox" data-k="program"><div><b>Programi i grupit është gati</b><small>Nisjet, vizitat, takimet dhe udhëzimet.</small></div></label>
+  </section>
+
+  <div class="sectionTitle">SHËNIME TË ADMINISTRATORIT</div>
+  <section class="panel noteBox">
+    <textarea id="notes" placeholder="Shkruaj këtu shënimet për Nusuk, grupin, dokumentet ose detyrat që duhen kryer..."></textarea>
+    <button class="btn green" style="margin-top:10px" onclick="saveNotes()">💾 RUAJ SHËNIMET</button>
+  </section>
+</main>
+
+<div class="footer">© 2026 Fahriu Travel • Nusuk Admin</div>
+</div>
+
+<script>
+const PASS="Nusuk2";
+const NOTES_KEY="FAHRIU_NUSUK_NOTES_V1";
+const CHECK_KEY="FAHRIU_NUSUK_CHECKS_V1";
+const $=id=>document.getElementById(id);
+
+function unlock(){
+  if($("pass").value===PASS){
+    sessionStorage.setItem("fahriuNusukAuth","1");
+    $("lock").classList.add("hidden");
+    $("err").textContent="";
+  }else{
+    $("err").textContent="Kodi nuk është i saktë.";
+  }
+}
+function lockAgain(){
+  sessionStorage.removeItem("fahriuNusukAuth");
+  $("pass").value="";
+  $("lock").classList.remove("hidden");
+}
+$("pass").addEventListener("keydown",e=>{if(e.key==="Enter")unlock()});
+if(sessionStorage.getItem("fahriuNusukAuth")==="1") $("lock").classList.add("hidden");
+
+$("notes").value=localStorage.getItem(NOTES_KEY)||"";
+function saveNotes(){
+  localStorage.setItem(NOTES_KEY,$("notes").value);
+  alert("Shënimet u ruajtën.");
+}
+
+let checks={};
+try{checks=JSON.parse(localStorage.getItem(CHECK_KEY)||"{}")}catch(e){}
+document.querySelectorAll("[data-k]").forEach(cb=>{
+  cb.checked=!!checks[cb.dataset.k];
+  cb.addEventListener("change",()=>{
+    checks[cb.dataset.k]=cb.checked;
+    localStorage.setItem(CHECK_KEY,JSON.stringify(checks));
+  });
+});
+</script>
+<a class='netlifyBack' href='/'>⌂ Ballina</a>
+</body>
+</html>

@@ -17,5 +17,6 @@ Burimi fillestar: *Rituali i Umres*, Muhammed ibën Salih el-Uthejmin, përkthim
 
 Rendi bazë: përgatitja dhe ihrami → telbija → tauafi (7 rrotullime) → dy rekate → sa'ji (7 ecje) → shkurtimi/rruajtja e flokëve.
 
-## Status
-Repository i sapokrijuar; skedarët origjinalë të aplikacionit dhe ikona ende nuk janë importuar. Nuk është verifikuar deploy-i në Netlify apo Cloudflare.
+## Gjendja e burimit
+
+Përditësimi i 24.11.2026 ruan faqet reale ekzistuese dhe shton chat me audio/offline, udhëzuesin origjinal me22 hapa dhe dua me burime, GPS, listën nga API dhe njoftimet. Shih [shënimet e përditësimit](docs/perditesimi-24-11-2026.md) për kufijtë dhe provat. Gjendja e publikimit konfirmohet veçmas nga platforma; prania në repository nuk provon publikim.

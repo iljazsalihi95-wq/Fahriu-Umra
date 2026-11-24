@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="sq">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Njoftime Fahriu Travel</title>
+<style>
+:root{
+  --deep:#061813;--deep2:#0b2d23;--gold:#d7ad46;--gold2:#f0d57c;
+  --paper:#f5f1e8;--ink:#13251e;--muted:#6c7771;--line:#d9d0bc;
+  --brown:#7d5a3b;--green:#0d855e;--orange:#e67e22;--red:#d94a3f;--blue:#2980b9
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#05100d;font-family:Arial,Helvetica,sans-serif;color:white}
+button,input,select,textarea{font:inherit}
+.app{
+  width:min(1100px,100%);margin:auto;min-height:100vh;
+  background:linear-gradient(#061813 0 320px,#f4f0e7 320px 100%)
+}
+.top{
+  position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;
+  padding:12px 15px;background:#061813ef;border-bottom:1px solid #8c6f31;backdrop-filter:blur(10px)
+}
+.brand{font-family:Georgia,serif;color:var(--gold2);font-weight:900;letter-spacing:2px;font-size:19px}
+.brand span{color:white}.brand small{display:block;font-family:Arial;font-size:8px;letter-spacing:.7px;color:#d9c68e;text-align:center}
+.topBtns{display:flex;gap:7px}.topBtn{border:1px solid #8d7133;background:#0c3025;color:#fff;border-radius:11px;padding:9px 11px;font-weight:900}
+.hero{min-height:305px;position:relative;overflow:hidden;border-bottom:4px solid var(--gold)}
+.hero:before{
+  content:"";position:absolute;inset:0;
+  background:
+    linear-gradient(90deg,#06120fea 0%,#06140fcf 48%,#06140f72 72%,#05100daa 100%),
+    url("https://archive.org/download/fahriu-travel-komplet-foto-video-vizita-26-08-2026/01_Fotot_Umra_2025%2F1000131218.jpg") center/cover no-repeat
+}
+.heroInner{position:relative;z-index:2;padding:38px 20px 34px;max-width:720px}
+.pill{display:inline-flex;gap:7px;align-items:center;padding:7px 11px;border-radius:999px;background:#704a2d;border:1px solid #bb8f67;font-size:10px;font-weight:900}
+.hero h1{font-family:Georgia,serif;color:#f1d77b;font-size:43px;margin:10px 0 5px;line-height:1}
+.hero h1 span{color:white}.hero p{max-width:640px;color:#dbe5df;line-height:1.55;font-size:14px}
+.heroBtns{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}
+.btn{
+  border:0;border-radius:12px;padding:12px 14px;font-weight:900;cursor:pointer;text-decoration:none;
+  display:inline-flex;align-items:center;justify-content:center;gap:6px
+}
+.gold{background:linear-gradient(135deg,#efd271,#c89b32);color:#15261f}
+.brown{background:linear-gradient(135deg,#956a46,#6a472d);color:white}
+.green{background:linear-gradient(135deg,#16a775,#08704e);color:white}
+.dark{background:#0a2c22;color:white;border:1px solid #81682f}
+.main{padding:15px 14px 50px;color:var(--ink)}
+.sectionTitle{display:flex;align-items:center;gap:9px;margin:14px 0 10px;font-weight:900}
+.sectionTitle:before,.sectionTitle:after{content:"";height:1px;background:#c9b67d;flex:1}
+.filters{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:14px}
+.filter{
+  border:1px solid #d0c6b0;background:#fff;color:#2a3d35;border-radius:999px;padding:9px 13px;font-weight:900;cursor:pointer
+}
+.filter.active{background:#795435;color:white;border-color:#795435}
+.noticeList{display:grid;gap:11px}
+.notice{
+  background:#fff;border:1px solid var(--line);border-radius:19px;padding:14px 15px;box-shadow:0 7px 20px #14261f13;
+  position:relative;overflow:hidden
+}
+.notice:before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:#795435}
+.notice.important:before{background:var(--orange)}.notice.urgent:before{background:var(--red)}.notice.info:before{background:var(--blue)}
+.noticeTop{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.noticeTitle{font-size:16px;font-weight:900;color:#163229}.noticeDate{font-size:10px;color:#7a837e;white-space:nowrap}
+.notice p{margin:8px 0 0;color:#5e6b64;line-height:1.55;font-size:12px}
+.noticeMeta{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.badge{font-size:9px;font-weight:900;padding:6px 8px;border-radius:999px;background:#f2ede4;color:#76522d}
+.badge.important{background:#fff0df;color:#a55b11}.badge.urgent{background:#fde9e6;color:#b3362e}.badge.info{background:#eaf3fa;color:#286a96}
+.empty{text-align:center;padding:34px 15px;color:#75807a;background:#fff;border:1px solid var(--line);border-radius:18px}
+.empty span{font-size:44px;display:block;margin-bottom:7px}
+.adminLogin,.editor{
+ position:fixed;inset:0;background:#000b;z-index:100;display:none;align-items:center;justify-content:center;padding:18px
+}
+.editor{align-items:flex-start;overflow:auto}
+.loginCard,.editCard{
+ width:min(430px,100%);background:#f7f2e7;color:#173029;border:2px solid #d1a942;border-radius:24px;padding:22px;box-shadow:0 24px 80px #000a
+}
+.loginCard{text-align:center}.editCard{width:min(820px,100%)}
+.loginCard input{width:100%;padding:13px;border:1px solid #baa77c;border-radius:11px;text-align:center;font-size:18px;margin:8px 0}
+.error{color:#ad2e28;font-size:11px;min-height:15px;margin-top:7px}
+.formGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
+.field label{display:block;font-size:10px;font-weight:900;color:#68736d;margin:0 0 4px}
+.field input,.field select,.field textarea{width:100%;border:1px solid #cec5b0;border-radius:11px;padding:11px;background:#fff;color:#17241f}
+.field textarea{min-height:100px;resize:vertical}.full{grid-column:1/-1}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:11px}.actions .btn{flex:1;min-width:130px}
+.adminList{display:grid;gap:8px;margin-top:14px}
+.adminRow{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;padding:9px;background:#fff;border:1px solid #d7ccb3;border-radius:12px}
+.adminRow b{font-size:12px}.adminRow small{display:block;color:#747e78;margin-top:2px}
+.adminRow button{border:0;background:#d94a3f;color:white;border-radius:9px;padding:7px 9px;font-weight:900}
+.footer{text-align:center;background:#061813;color:#d2c392;padding:18px;font-size:10px}
+@media(max-width:760px){.hero h1{font-size:36px}}
+@media(max-width:500px){.formGrid{grid-template-columns:1fr}.full{grid-column:auto}}
+</style>
+<style id="netlify-back-style">
+.netlifyBack{position:fixed;right:12px;bottom:16px;z-index:9998;text-decoration:none;background:#061813;color:#f0d57c;border:1px solid #b89136;border-radius:999px;padding:10px 13px;font:700 12px Arial;box-shadow:0 5px 18px #0006}
+</style>
+<meta name="theme-color" content="#061813"><link rel="manifest" href="./manifest.webmanifest"><style>body{font-size:16px;line-height:1.55}.brand small,.pill,.noticeDate,.badge,.field label,.footer,.netlifyBack,.adminRow small{font-size:14px}.hero p,.notice p,.adminRow b,.error{font-size:16px}.noticeTitle{font-size:20px;margin:0}.notice p{white-space:pre-wrap}.syncPanel{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px;margin-bottom:16px}.syncPanel p{margin:8px 0}#notificationStatus{color:#5b6b61;font-size:14px}button{min-height:44px}button:disabled{opacity:.6}button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #1a8462;outline-offset:3px}.editCard>p{font-size:16px!important}.noticeTop{flex-wrap:wrap}</style></head>
+<body>
+<div class="app">
+<header class="top">
+  <div class="brand">FAHRIU <span>TRAVEL</span><small>UDHËTIMI YT DREJT UMRES</small></div>
+  <div class="topBtns">
+    <button class="topBtn" onclick="document.getElementById('njoftimet').scrollIntoView()">🔔</button>
+    <button class="topBtn" onclick="openAdminLogin()" aria-label="Parapamja lokale">✎</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="heroInner">
+    <div class="pill">🔔 NJOFTIME FAHRIU TRAVEL</div>
+    <h1>QËNDRO <span>I INFORMUAR</span></h1>
+    <p>Njoftimet e grupit, ndryshimet e programit, takimet, nisjet dhe informacionet e rëndësishme të Fahriu Travel në një vend.</p>
+    <div class="heroBtns">
+      <button class="btn gold" onclick="setFilter('all')">📢 Të gjitha</button>
+      <button class="btn brown" onclick="setFilter('urgent')">⚠️ Urgjente</button>
+    </div>
+  </div>
+</section>
+
+<main class="main">
+  <div class="sectionTitle" id="njoftimet">NJOFTIMET</div>
+
+  <div class="filters">
+    <button class="filter active" data-f="all" onclick="setFilter('all')">Të gjitha</button>
+    <button class="filter" data-f="normal" onclick="setFilter('normal')">Njoftime</button>
+    <button class="filter" data-f="important" onclick="setFilter('important')">Të rëndësishme</button>
+    <button class="filter" data-f="urgent" onclick="setFilter('urgent')">Urgjente</button>
+    <button class="filter" data-f="info" onclick="setFilter('info')">Info</button>
+  </div>
+
+  <section class="syncPanel" aria-label="Përditësimi i njoftimeve"><p id="syncStatus" role="status">Duke kontrolluar njoftimet e organizatorit…</p><div class="heroBtns"><button id="refreshButton" class="btn dark" type="button">Përditëso njoftimet</button><button id="notifyButton" class="btn gold" type="button">Aktivizo njoftimet</button><button class="btn brown" type="button" onclick="openEditor()">Parapamje lokale</button></div><p id="notificationStatus">Njoftime për përditësime gjatë kohës që faqja është e hapur. Njoftimet me aplikacionin e mbyllur nuk janë aktivizuar.</p></section><section id="noticeList" class="noticeList" aria-label="Njoftimet e grupit"></section>
+</main>
+
+<div class="footer">© 2026 Fahriu Travel • Njoftime</div>
+</div>
+
+<div id="editor" class="editor">
+  <div class="editCard">
+    <h2 style="margin:0;color:#0d5e46">Parapamja lokale e njoftimeve</h2>
+    <p style="font-size:11px;color:#69736e">Këtu përgatit vetëm parapamje në këtë pajisje. Publikimi për udhëtarët bëhet nga organizatori në tabelën Njoftimet të sistemit. Kjo faqe nuk jep qasje administratori dhe nuk dërgon njoftime te të tjerët.</p>
+
+    <div class="formGrid">
+      <div class="field"><label>DATA</label><input id="fDate" type="date"></div>
+      <div class="field"><label>LLOJI</label>
+        <select id="fType">
+          <option value="normal">Njoftim</option>
+          <option value="important">E rëndësishme</option>
+          <option value="urgent">Urgjente</option>
+          <option value="info">Info</option>
+        </select>
+      </div>
+      <div class="field full"><label>TITULLI</label><input id="fTitle" placeholder="p.sh. Ndryshim në orarin e nisjes"></div>
+      <div class="field full"><label>TEKSTI</label><textarea id="fText" placeholder="Shkruaj njoftimin..."></textarea></div>
+      <div class="field"><label>VENDI / PIKA E TAKIMIT</label><input id="fPlace" placeholder="Opsionale"></div>
+      <div class="field"><label>ORA</label><input id="fTime" placeholder="p.sh. 07:30"></div>
+    </div>
+
+    <div class="actions">
+      <button class="btn green" onclick="saveNotice()">Ruaj vetëm në këtë pajisje</button>
+      <button class="btn dark" onclick="closeEditor()">MBYLL</button>
+    </div>
+
+    <p id="editorStatus" role="status"></p><div id="adminList" class="adminList"></div>
+  </div>
+</div>
+
+<script>
+'use strict';
+const API='https://script.google.com/macros/s/AKfycbxglgvt0uiZki_xGZ009fWPD-wtDnIQPELNgcyr9bQ-kih68_fUYiYu5Bjs5MhqVgI0/exec?action=notices';
+const KEY='FAHRIU_TRAVEL_NOTICES_V1', SERVER_KEY='FAHRIU_SERVER_NOTICES_V1', NOTIFY_KEY='FAHRIU_NOTICE_NOTIFICATIONS_V1';
+const $=id=>document.getElementById(id);
+let currentFilter='all',serverNotices=[],lastFetched='',busy=false,hasSynced=false;
+function read(key,fallback){try{const value=JSON.parse(localStorage.getItem(key)||'null');return value===null?fallback:value}catch{return fallback}}
+function write(key,value){try{localStorage.setItem(key,JSON.stringify(value));return true}catch{$('syncStatus').textContent='Nuk ka hapësirë për ruajtje në pajisje. Përmbajtja mund të mos jetë e disponueshme pa internet.';return false}}
+function getNotices(){const value=read(KEY,[]);return Array.isArray(value)?value.filter(n=>n&&typeof n.title==='string'&&typeof n.text==='string'):[]}
+function setNotices(a){return write(KEY,a)}
+function norm(key){return String(key).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]/g,'')}
+function hash(text){let h=2166136261;for(const c of text){h^=c.charCodeAt(0);h=Math.imul(h,16777619)}return(h>>>0).toString(36)}
+function normalizeNotice(row){
+ if(!row||typeof row!=='object')return null;
+ const data={};Object.entries(row).forEach(([k,v])=>{data[norm(k)]=v});
+ const get=(...keys)=>{for(const key of keys){const v=data[norm(key)];if(v!==undefined&&v!==null&&String(v).trim())return String(v).trim()}return''};
+ const title=get('Titulli','title','Njoftimi','Subjekti','subject'),text=get('Teksti','text','Mesazhi','message','Permbajtja','Pershkrimi','description','body');
+ if(!title&&!text)return null;
+ const rawType=norm(get('Lloji','type','Prioriteti','priority','Kategoria','category'));
+ const type=/urgent|urgjent|emergjen/.test(rawType)?'urgent':/important|rendes|lart|high/.test(rawType)?'important':/info/.test(rawType)?'info':'normal';
+ const rawDate=get('Data','date','createdAt','krijuar','Data e publikimit');
+ let date=rawDate;const dm=rawDate.match(/^(\d{1,2})[./](\d{1,2})[./](\d{4})$/);if(dm)date=dm[3]+'-'+dm[2].padStart(2,'0')+'-'+dm[1].padStart(2,'0');else if(/^\d{4}-\d\d-\d\d/.test(rawDate))date=rawDate.slice(0,10);
+ const time=get('Ora','time','Orari'),place=get('Vendi','place','location','Vendtakimi','Pika e takimit');
+ return{id:get('ID','noticeId','Njoftim ID')||'notice-'+hash([title,text,date,time,place].join('|')),title:title||'Njoftim Fahriu Travel',text,date,time,place,type,local:false};
+}
+function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+function fmtDate(value){if(!value)return'';if(/^\d{4}-\d\d-\d\d$/.test(value)){const d=new Date(value+'T12:00:00');if(Number.isFinite(d.valueOf()))return d.toLocaleDateString('sq-AL',{day:'2-digit',month:'2-digit',year:'numeric'})}return value}
+function label(t){return t==='urgent'?'URGJENTE':t==='important'?'E RËNDËSISHME':t==='info'?'INFO':'NJOFTIM'}
+function icon(t){return t==='urgent'?'⚠️':t==='important'?'❗':t==='info'?'ℹ️':'🔔'}
+function validType(type){return['normal','urgent','important','info'].includes(type)?type:'normal'}
+function render(){
+ let notices=[...serverNotices,...getNotices().map(n=>({...n,local:true,type:validType(n.type)}))].sort((a,b)=>((b.date||'')+' '+(b.time||'')).localeCompare((a.date||'')+' '+(a.time||'')));
+ if(currentFilter!=='all')notices=notices.filter(n=>n.type===currentFilter);
+ $('noticeList').innerHTML=notices.length?notices.map(n=>`<article class="notice ${n.type}"><div class="noticeTop"><h2 class="noticeTitle">${icon(n.type)} ${esc(n.title)}</h2><div class="noticeDate">${esc(fmtDate(n.date))}${n.time?' • '+esc(n.time)+' · Ora e Mekës':''}</div></div><p>${esc(n.text)}</p><div class="noticeMeta"><span class="badge ${n.type}">${label(n.type)}</span><span class="badge">${n.local?'PARAPAMJE · VETËM KJO PAJISJE':'NJOFTIM NGA ORGANIZATORI'}</span>${n.place?`<span class="badge">📍 ${esc(n.place)}</span>`:''}</div></article>`).join(''):'<div class="empty"><span>🔔</span><b>Ende nuk ka njoftime në këtë kategori.</b><p>Njoftimet e publikuara nga organizatori shfaqen pas përditësimit.</p></div>';
+ $('notifyButton').textContent=read(NOTIFY_KEY,false)?'Çaktivizo njoftimet':'Aktivizo njoftimet';
+}
+function setFilter(filter){currentFilter=['all','normal','important','urgent','info'].includes(filter)?filter:'all';document.querySelectorAll('.filter').forEach(b=>b.classList.toggle('active',b.dataset.f===currentFilter));render()}
+function cacheDescription(){return lastFetched?'Ruajtja e fundit: '+new Date(lastFetched).toLocaleString('sq-AL',{timeZone:'Asia/Riyadh'})+' · Ora e Mekës.':'Ende nuk ka njoftime të ruajtura nga serveri.'}
+async function notifyNew(items){if(!read(NOTIFY_KEY,false)||!('Notification'in window)||Notification.permission!=='granted'||!items.length)return;try{const title=items.length===1?'Njoftim i ri · Fahriu Travel':items.length+' njoftime të reja · Fahriu Travel',options={body:'Hap rubrikën e njoftimeve për hollësitë.',tag:'fahriu-notices',data:{url:'njoftime.html'}};const registration='serviceWorker'in navigator?await navigator.serviceWorker.getRegistration():null;if(registration)await registration.showNotification(title,options);else new Notification(title,options)}catch{}}
+async function syncNotices(){
+ if(busy)return;if(!navigator.onLine){$('syncStatus').textContent='Pa internet. Po shfaqen njoftimet e ruajtura dhe parapamjet lokale. '+cacheDescription();return}
+ busy=true;$('refreshButton').disabled=true;$('syncStatus').textContent='Duke marrë njoftimet nga organizatori…';const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),20000);
+ try{const response=await fetch(API,{signal:controller.signal,cache:'no-store',credentials:'omit'});if(!response.ok)throw Error('Njoftimet nuk u morën.');const result=await response.json();if(result.ok!==true||!Array.isArray(result.data))throw Error('Përgjigjja e serverit nuk është e vlefshme.');const before=new Set(serverNotices.map(n=>n.id+'|'+hash(JSON.stringify(n))));const items=result.data.map(normalizeNotice).filter(Boolean);const unique=[...new Map(items.map(n=>[n.id,n])).values()];if(hasSynced)notifyNew(unique.filter(n=>!before.has(n.id+'|'+hash(JSON.stringify(n)))));serverNotices=unique;lastFetched=new Date().toISOString();hasSynced=true;const saved=write(SERVER_KEY,{items:serverNotices,fetchedAt:lastFetched});render();if(saved)$('syncStatus').textContent=(serverNotices.length?serverNotices.length+' njoftime të publikuara.':'Organizatori ende nuk ka publikuar njoftime.')+' '+cacheDescription();
+ }catch{$('syncStatus').textContent='Lidhja me serverin nuk u krye. Po shfaqen të dhënat e ruajtura. '+cacheDescription()}finally{clearTimeout(timer);busy=false;$('refreshButton').disabled=false}
+}
+async function toggleNotifications(){if(read(NOTIFY_KEY,false)){write(NOTIFY_KEY,false);$('notificationStatus').textContent='Njoftimet u çaktivizuan në këtë pajisje.';render();return}if(!('Notification'in window)){$('notificationStatus').textContent='Njoftimet nuk mbështeten nga ky shfletues.';return}try{const permission=await Notification.requestPermission();write(NOTIFY_KEY,permission==='granted');$('notificationStatus').textContent=permission==='granted'?'Njoftimet janë aktive gjatë kohës që kjo faqe është e hapur dhe ka internet.':'Njoftimet nuk u lejuan. Lejimi ndryshohet te cilësimet e shfletuesit.';render()}catch{$('notificationStatus').textContent='Njoftimet nuk u aktivizuan në këtë pajisje.'}}
+// This editor changes local previews only; publication is performed in the organizer's Sheet.
+function openAdminLogin(){openEditor()}
+function closeAdminLogin(){$('adminLogin').style.display='none'}
+function openEditor(){$('editor').style.display='flex';$('fDate').value=new Date().toLocaleDateString('en-CA');renderAdminList()}
+function closeEditor(){$('editor').style.display='none'}
+function saveNotice(){const title=$('fTitle').value.trim(),text=$('fText').value.trim();if(!title||!text){$('editorStatus').textContent='Plotëso titullin dhe tekstin.';return}const notices=getNotices();notices.push({id:crypto.randomUUID?crypto.randomUUID():Date.now().toString(36),date:$('fDate').value,type:validType($('fType').value),title,text,place:$('fPlace').value.trim(),time:$('fTime').value.trim(),local:true});if(!setNotices(notices))return;$('fTitle').value='';$('fText').value='';$('fPlace').value='';$('fTime').value='';$('editorStatus').textContent='U ruajt vetëm në këtë pajisje. Udhëtarët e tjerë nuk e shohin.';render();renderAdminList()}
+function deleteNotice(id){if(!confirm('Ta fshij vetëm këtë parapamje lokale? Njoftimet e serverit nuk ndryshojnë.'))return;if(!setNotices(getNotices().filter(n=>n.id!==id)))return;render();renderAdminList()}
+function renderAdminList(){const root=$('adminList');root.replaceChildren();for(const n of getNotices().slice().reverse()){const row=document.createElement('div');row.className='adminRow';const text=document.createElement('div'),b=document.createElement('b'),small=document.createElement('small'),button=document.createElement('button');b.textContent=n.title;small.textContent=fmtDate(n.date)+' · Parapamje lokale';text.append(b,small);button.textContent='Fshi parapamjen';button.type='button';button.onclick=()=>deleteNotice(n.id);row.append(text,button);root.append(row)}if(!root.children.length)root.textContent='Nuk ka parapamje lokale.'}
+const saved=read(SERVER_KEY,{});if(Array.isArray(saved.items)){serverNotices=saved.items.map(normalizeNotice).filter(Boolean);lastFetched=saved.fetchedAt||''}
+// Keep earlier web previews without treating them as published announcements.
+const old=read('FAHRIU_NOTICES_CACHE_V2',[]);if(Array.isArray(old)){const local=getNotices(),ids=new Set(local.map(n=>n.id));const extras=old.filter(n=>n?.local&&typeof n.title==='string'&&typeof n.text==='string'&&!ids.has(n.id));if(extras.length)setNotices([...local,...extras])}
+$('refreshButton').onclick=syncNotices;$('notifyButton').onclick=toggleNotifications;
+addEventListener('online',syncNotices);addEventListener('offline',()=>{$('syncStatus').textContent='Pa internet. '+cacheDescription()});document.addEventListener('visibilitychange',()=>{if(!document.hidden)syncNotices()});setInterval(()=>{if(!document.hidden)syncNotices()},60000);
+if('serviceWorker'in navigator&&location.protocol==='https:')navigator.serviceWorker.register('./sw.js').catch(()=>{});
+render();syncNotices();
+
+</script>
+<a class='netlifyBack' href='/'>⌂ Ballina</a>
+</body>
+</html>
