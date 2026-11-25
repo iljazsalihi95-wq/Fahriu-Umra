@@ -1,4 +1,4 @@
-const CACHE='fahriu-travel-audio-v4';
+const CACHE='fahriu-travel-roster-v5';
 const CORE=['./','./index.html','./offline.js','./udhezuesi-umres.html','./vizitat-historike.html','./chat.html','./chat.css','./chat.js','./manifest.webmanifest','./icons/icon-192.png','./icons/icon-512.png','./icons/apple-touch-icon.png','./vizitat.html','./medine.html','./mekke.html','./taif.html','./udhezuesi.html','./bileta-lira.html','./nusuk.html','./programi-live.html','./dua-dhiker.html','./momente-umra.html','./grupi-ardhshem.html','./ekipi-organizues.html','./njoftime.html'];
 const PATHS=CORE.map(p=>new URL(p,self.location.href).pathname);
 self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(CORE)).then(()=>self.skipWaiting()))});
