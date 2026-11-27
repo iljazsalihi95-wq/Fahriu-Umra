@@ -1,4 +1,4 @@
-const CACHE='fahriu-travel-v6';
+const CACHE='fahriu-travel-v7';
 const CORE=['./','./index.html','./offline.js','./udhezuesi-umres.html','./vizitat-historike.html','./chat.html','./chat.css','./chat.js','./manifest.webmanifest','./icons/icon-192.png','./icons/icon-512.png','./icons/apple-touch-icon.png','./vizitat.html','./medine.html','./mekke.html','./taif.html','./udhezuesi.html','./bileta-lira.html','./nusuk.html','./programi-live.html','./dua-dhiker.html','./momente-umra.html','./grupi-ardhshem.html','./ekipi-organizues.html','./njoftime.html'];
 CORE.push(...Array.from({length:22},(_,index)=>'./media/umra/'+(index+1)+'.png'));
 CORE.push(

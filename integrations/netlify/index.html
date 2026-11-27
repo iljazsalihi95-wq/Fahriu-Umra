@@ -149,6 +149,7 @@ body::after{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradi
 </div>
 
 <script>
+try{localStorage.removeItem('FAHRIU_CURRENT_GROUP_ROSTER_V2');localStorage.removeItem('FAHRIU_PUBLIC_ROSTER_V1')}catch{}
 const MASTER_API="https://script.google.com/macros/s/AKfycbxglgvt0uiZki_xGZ009fWPD-wtDnIQPELNgcyr9bQ-kih68_fUYiYu5Bjs5MhqVgI0/exec";
 
 async function sendInterest(){

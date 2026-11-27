@@ -41,6 +41,7 @@ assert.equal(call({action:'chat_send',token,id:crypto.randomUUID(),body:'too fas
 cached.clear();
 const imageId=crypto.randomUUID(),jpeg=Buffer.from([255,216,255,224,0,0,255,217]).toString('base64');
 const image={action:'chat_send',token,id:imageId,kind:'photo',mime:'image/jpeg',audioBase64:jpeg};
+assert.equal(call({...image,group:'other-group'}).error,'GROUP_CHANGED');
 assert.equal(call(image).message.kind,'photo');
 const photoRows=sheets.Chat_Audio.rows.length;
 assert.equal(call(image).message.id,imageId);

@@ -46,6 +46,7 @@ function ftChat_(p) {
       return {ok:true,status:'active',mime:found[7],audioBase64:chunks.map(function(r){return String(r[3]);}).join('')};
     }
     if(action==='chat_send'){
+      if(p.group!==undefined && String(p.group)!==group) return {ok:false,error:'GROUP_CHANGED'};
       var id=String(p.id||''), body=String(p.body||'').trim();
       var kind=String(p.kind||'text');
       if(!/^[a-f0-9-]{36}$/.test(id) || ['text','audio','photo'].indexOf(kind)<0) return {ok:false,error:'INVALID_MESSAGE'};
