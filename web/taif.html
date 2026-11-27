@@ -72,5 +72,5 @@ function nice(k){return k<1?Math.round(k*1000)+" m":k.toFixed(1)+" km"}
 function gps(){let s=document.getElementById("gpsStatus");if(!navigator.geolocation){s.textContent="GPS nuk mbështetet.";return}s.textContent="Duke gjetur lokacionin...";navigator.geolocation.getCurrentPosition(pos=>{userPos={lat:pos.coords.latitude,lng:pos.coords.longitude};let p=[...places].sort((a,b)=>hav(userPos.lat,userPos.lng,a.lat,a.lng)-hav(userPos.lat,userPos.lng,b.lat,b.lng))[0];s.innerHTML=`Më afër: <b>${p.title[lang]}</b> • ${nice(hav(userPos.lat,userPos.lng,p.lat,p.lng))}`;renderCards()},()=>s.textContent="Lejo Location/GPS për këtë faqe.",{enableHighAccuracy:true,timeout:12000})}
 document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal()});
 renderCards();
-</script><a class='netlifyBack' href='/'>⌂ Ballina</a>
+</script><a class='netlifyBack' href='index.html'>⌂ Ballina</a>
 </body></html>

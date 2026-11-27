@@ -1,11 +1,11 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
 const source=fs.readFileSync('web/chat.js','utf8'),html=fs.readFileSync('web/chat.html','utf8');
-assert(!html.includes('type="file"'),'No file chooser is offered');
+assert.deepEqual([...html.matchAll(/<input[^>]*type="file"[^>]*>/g)].map(x=>x[0]),['<input id="photoFile" type="file" accept="image/*">'],'The file chooser accepts photos only');
 assert(!source.includes('voiceFile'),'No removed field is accessed');
 const elements=new Map();
 class Element {constructor(){this.value='';this.hidden=false;this.disabled=false;this.children=[];}addEventListener(){}replaceChildren(...v){this.children=v}append(...v){this.children.push(...v)}setAttribute(){}}
 for(const id of html.matchAll(/id="([^"]+)"/g))elements.set(id[1],new Element());
-const local=new Map(),blobs=new Map();let clock=1000,calls=0,stops=0,deny=true;
+const local=new Map([['fahriu_chat_v1',JSON.stringify({status:'active',name:'Test Member',token:'test',messages:[],queue:[]})]]),blobs=new Map();let clock=1000,calls=0,stops=0,deny=true;
 const document={hidden:false,getElementById(id){assert(elements.has(id),'Known element: '+id);return elements.get(id)},createElement(){return new Element()},addEventListener(){}};
 const database={createObjectStore(){},transaction(){const tx={};tx.objectStore=()=>({put(row){const req={};queueMicrotask(()=>{blobs.set(row.id,row);req.result=row.id;req.onsuccess?.();tx.oncomplete?.()});return req},get(id){const req={};queueMicrotask(()=>{req.result=blobs.get(id);req.onsuccess?.();tx.oncomplete?.()});return req},delete(id){queueMicrotask(()=>{blobs.delete(id);tx.oncomplete?.()})}});return tx}};
 class Recorder {static isTypeSupported(){return true}constructor(stream,opt){this.state='inactive';this.mimeType=opt.mimeType;Recorder.instance=this;}start(){this.state='recording'}stop(){this.state='inactive';this.ondataavailable({data:new Blob([new Uint8Array([26,69,223,163,0,0])],{type:this.mimeType})});this.onstop();}}
