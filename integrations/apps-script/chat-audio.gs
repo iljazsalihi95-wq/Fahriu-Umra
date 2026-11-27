@@ -1,5 +1,5 @@
 // Replace the existing ftChat_ and ftChatMessage_ functions with this file.
-// Also add 'chat_audio' to the doPost chat action allowlist.
+// Keep chat_join, chat_sync, chat_send and chat_audio in the doPost allowlist.
 // Uses the existing spreadsheet scope only. Chat_Audio is never served publicly.
 function ftChat_(p) {
   var lock = LockService.getScriptLock();
@@ -16,8 +16,8 @@ function ftChat_(p) {
     for (var i=1;i<rows.length;i++) if(rows[i][1]===hash){member=rows[i];break;}
     var cache = CacheService.getScriptCache();
     if(action==='chat_join' && !member){
-      var name = String(p.name||'').trim();
-      if(name.length<2 || name.length>60) return {ok:false,error:'INVALID_NAME'};
+      var name = String(p.name||'').trim().replace(/\s+/g,' ');
+      if(!/^[\p{L}\p{M}][\p{L}\p{M} .’'-]* [\p{L}\p{M}][\p{L}\p{M} .’'-]*$/u.test(name) || name.length>60) return {ok:false,error:'INVALID_NAME'};
       if(rows.length>300) return {ok:false,error:'CONTACT_ADMIN'};
       var count=Number(cache.get('ft_chat_join_count')||0);
       if(count>=30) return {ok:false,error:'BUSY'};
@@ -33,9 +33,11 @@ function ftChat_(p) {
     var messages=ftChatSheet_(ss,'Chat_Mesazhet',['id','grupi','anetari','emri','teksti','krijuar','lloji','mime','sekonda','audio_key']);
     var data=messages.getDataRange().getValues();
     if(action==='chat_audio'){
+      // Reuse the authenticated media route for photos and legacy audio.
+      var mediaKind=p.kind==='photo'?'photo':'audio';
       var wanted=String(p.id||''), found=null;
       for(var a=1;a<data.length;a++) if(data[a][0]===wanted && data[a][1]===group){found=data[a];break;}
-      if(!found || found[6]!=='audio' || !found[9]) return {ok:false,error:'AUDIO_UNAVAILABLE'};
+      if(!found || found[6]!==mediaKind || !found[9]) return {ok:false,error:'AUDIO_UNAVAILABLE'};
       var audio=ss.getSheetByName('Chat_Audio');
       if(!audio) return {ok:false,error:'AUDIO_UNAVAILABLE'};
       var chunks=audio.getDataRange().getValues().slice(1).filter(function(r){return r[0]===found[9] && r[1]===group;}).sort(function(x,y){return Number(x[2])-Number(y[2]);});
@@ -46,7 +48,7 @@ function ftChat_(p) {
     if(action==='chat_send'){
       var id=String(p.id||''), body=String(p.body||'').trim();
       var kind=String(p.kind||'text');
-      if(!/^[a-f0-9-]{36}$/.test(id) || ['text','audio'].indexOf(kind)<0) return {ok:false,error:'INVALID_MESSAGE'};
+      if(!/^[a-f0-9-]{36}$/.test(id) || ['text','audio','photo'].indexOf(kind)<0) return {ok:false,error:'INVALID_MESSAGE'};
       for(var j=1;j<data.length;j++) if(data[j][0]===id){
         if(data[j][1]!==group || data[j][2]!==member[0]) return {ok:false,error:'INVALID_MESSAGE'};
         return {ok:true,status:'active',message:ftChatMessage_(data[j])};
@@ -55,19 +57,25 @@ function ftChat_(p) {
       if(kind==='text'){
         if(!body || body.length>2000) return {ok:false,error:'INVALID_MESSAGE'};
       } else {
-        mime=String(p.mime||'').toLowerCase();duration=Number(p.duration);
-        if(!/^audio\/(webm|mp4|ogg|mpeg|wav|x-wav)(;\s*codecs=[a-z0-9., -]+)?$/.test(mime) || !isFinite(duration) || duration<=0 || duration>60) return {ok:false,error:'INVALID_AUDIO'};
+        mime=String(p.mime||'').toLowerCase();duration=kind==='audio'?Number(p.duration):0;
+        if(kind==='photo' && mime!=='image/jpeg') return {ok:false,error:'INVALID_PHOTO'};
+        if(kind==='audio' && (!/^audio\/(webm|mp4|ogg|mpeg|wav|x-wav)(;\s*codecs=[a-z0-9., -]+)?$/.test(mime) || !isFinite(duration) || duration<=0 || duration>60)) return {ok:false,error:'INVALID_AUDIO'};
         encoded=String(p.audioBase64||'');
         if(!encoded || encoded.length>1398104 || encoded.length%4 || !/^[A-Za-z0-9+/]+={0,2}$/.test(encoded)) return {ok:false,error:'INVALID_AUDIO'};
         var bytes;
         try {bytes=Utilities.base64Decode(encoded);} catch(e){return {ok:false,error:'INVALID_AUDIO'};}
-        if(!bytes.length || bytes.length>1048576 || !ftChatAudioSignature_(bytes,mime)) return {ok:false,error:'INVALID_AUDIO'};
+        if(!bytes.length || bytes.length>1048576) return {ok:false,error:kind==='photo'?'INVALID_PHOTO':'INVALID_AUDIO'};
+        if(kind==='photo'){
+          var n=bytes.length;
+          if(n<4 || (bytes[0]&255)!==255 || (bytes[1]&255)!==216 || (bytes[2]&255)!==255 ||
+             (bytes[n-2]&255)!==255 || (bytes[n-1]&255)!==217) return {ok:false,error:'INVALID_PHOTO'};
+        } else if(!ftChatAudioSignature_(bytes,mime)) return {ok:false,error:'INVALID_AUDIO'};
         body='';
       }
       var key='ft_chat_send_'+member[0];
       if(cache.get(key)) return {ok:false,error:'RATE_LIMIT'};
       var audioKey='';
-      if(kind==='audio'){
+      if(kind!=='text'){
         var storage=ftChatSheet_(ss,'Chat_Audio',['audio_key','grupi','pjesa','base64']);
         if(storage.getLastRow()>100000) return {ok:false,error:'CONTACT_ADMIN'};
         audioKey=Utilities.getUuid();
@@ -81,7 +89,11 @@ function ftChat_(p) {
       cache.put(key,'1',2);
       return {ok:true,status:'active',message:ftChatMessage_(row)};
     }
-    return {ok:true,status:'active',member:{id:member[0],name:member[2],group:group},messages:data.slice(1).filter(function(r){return r[1]===group;}).slice(-200).map(ftChatMessage_)};
+    var visitsSheet=ss.getSheetByName('Chat_Vizitat');
+    var visits=visitsSheet?visitsSheet.getDataRange().getValues().slice(1)
+      .filter(function(r){return r[0]===group && r[1] && r[2];})
+      .map(function(r){return {title:String(r[1]),details:String(r[2])};}):[];
+    return {ok:true,status:'active',visits:visits,member:{id:member[0],name:member[2],group:group},messages:data.slice(1).filter(function(r){return r[1]===group;}).slice(-200).map(ftChatMessage_)};
   } catch(err){return {ok:false,error:'CHAT_UNAVAILABLE'};} finally {lock.releaseLock();}
 }
 function ftChatSheet_(ss,name,headers){
